@@ -854,12 +854,12 @@ main footer :not(main) > a {
   font-weight: 700;
   text-decoration: none;
 }
-main .avatar {
+main .author {
   margin: auto;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: url("../images/avatar.jpg");
+  background: url("../images/author.jpg");
   background-repeat: no-repeat;
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
@@ -869,13 +869,13 @@ main .avatar {
   -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
 }
-main .avatar-name {
+main .author-name {
   text-align: center;
   font-size: 3.3rem;
   margin: 30px auto 9px auto;
   color: #141414;
 }
-main .avatar-description {
+main .author-description {
   margin-top: 5px;
   text-align: center;
   color: #737373;
