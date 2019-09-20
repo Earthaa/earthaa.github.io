@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[CSAPP信息的表示与处理]]></title>
+    <url>%2F2019%2F09%2F20%2Fcsapp%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86%2F</url>
+    <content type="text"><![CDATA[前言本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。 众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其他进制的表示方法，而采用二进制。 值得一提的是，上个世纪70、80年代，苏联有科学家研究过三进制的计算机，半导体元器件有+1、0、-1三种形态，可以表示三进制，但是后来随着资金的撤出，三进制计算机流产。 整数的表示无符号数（unsigned number）通常的计算机中，用多位二进制码来表示一个整数（通常为32位或者64位），而其中如果最高位不用作符号位，则该表示方法为unsigned，c语言中就有unsigned int，unsigned char等等数据形式。 unsigned数的一般表示范围为: $a+b=c$]]></content>
+      <categories>
+        <category>系统</category>
+        <category>二进制</category>
+      </categories>
+      <tags>
+        <tag>CSAPP</tag>
+        <tag>符号数</tag>
+        <tag>无符号数</tag>
+        <tag>浮点数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode763 Partition Labels]]></title>
+    <url>%2F2019%2F09%2F20%2FLeetCode763-Partition-Labels%2F</url>
+    <content type="text"><![CDATA[题目描述A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts. 1Input: S = &quot;ababcbacadefegdehijhklij&quot; 1Output: [9,7,8] 1234Explanation:The partition is &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;.This is a partition so that each letter appears in at most one part.A partition like &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; is incorrect, because it splits S into less parts. 解析根据题意，我们是要将一个字符串划分为若干个区间，任何单个的字符都只能出现在一个区间内，通过简单的模拟题意，很容易发现，这是一个可以利用贪心得以解决的问题。 先扫一遍字符串，求出每个字符开始位置和终止位置。在第二次扫描时，每次向后读取一个字符，更新最大终止位置，求出区间长度，当扫描的index到达当前最大终止位置，则说明这段区间所有的字符都出现且仅出现在该区间内，此时保存位置即可。 代码12345678910111213141516public List&lt;Integer&gt; partitionLabels(String S) &#123; int[] last = new int[26]; for (int i = 0; i &lt; S.length(); ++i) last[S.charAt(i) - 'a'] = i; int j = 0, anchor = 0; List&lt;Integer&gt; res = new ArrayList(); for (int i = 0; i &lt; S.length(); ++i) &#123; j = Math.max(j, last[S.charAt(i) - 'a']); if (i == j) &#123; res.add(i - anchor + 1); anchor = i + 1; &#125; &#125; return res;&#125; Tips 如果需要对英文或者数字字符进行hash，可以直接使用数组，不必从头再建立一个HashMap 本题曾出现在Amazon OA中]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>Greedy</tag>
+        <tag>Algorithms</tag>
+        <tag>Amazon</tag>
+      </tags>
+  </entry>
+</search>
