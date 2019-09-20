@@ -55,32 +55,33 @@
   };
 </script>
 
-  <meta name="description" content="姑妄言之姑听之">
-<meta name="keywords" content="pen, notes, coding, developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yi&#39;s Blog">
-<meta property="og:url" content="http://earthaa.github.io/index.html">
+  <meta name="description" content="1、前言利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文 2、hexo建站在mac中配置hexo其实十分方便，几行命令，选个主题就可以完成基本的建站、配置等操作。以下是一些建站用到的命令，根据">
+<meta name="keywords" content="配置,hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo配置">
+<meta property="og:url" content="http://earthaa.github.io/2019/09/21/hexo配置/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="姑妄言之姑听之">
+<meta property="og:description" content="1、前言利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文 2、hexo建站在mac中配置hexo其实十分方便，几行命令，选个主题就可以完成基本的建站、配置等操作。以下是一些建站用到的命令，根据">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-20T16:58:16.744Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yi&#39;s Blog">
-<meta name="twitter:description" content="姑妄言之姑听之">
-  <link rel="canonical" href="http://earthaa.github.io/">
+<meta name="twitter:title" content="hexo配置">
+<meta name="twitter:description" content="1、前言利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文 2、hexo建站在mac中配置hexo其实十分方便，几行命令，选个主题就可以完成基本的建站、配置等操作。以下是一些建站用到的命令，根据">
+  <link rel="canonical" href="http://earthaa.github.io/2019/09/21/hexo配置/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Yi's Blog</title>
+  <title>hexo配置 | Yi's Blog</title>
   
 
 
@@ -244,12 +245,13 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/21/hexo配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -262,9 +264,8 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/21/hexo配置/" class="post-title-link" itemprop="url">hexo配置</a>
+        <h1 class="post-title" itemprop="name headline">hexo配置
+
           
         </h1>
 
@@ -311,7 +312,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文</p>
+        <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文</p>
 <h2 id="2、hexo建站"><a href="#2、hexo建站" class="headerlink" title="2、hexo建站"></a>2、hexo建站</h2><p>在mac中配置hexo其实十分方便，几行命令，选个主题就可以完成基本的建站、配置等操作。<br>以下是一些建站用到的命令，根据官网要求，首先确保有安装node.js且版本不低于8.6</p>
 <p>安装hexo命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
 <p>建站命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo init &lt;folder&gt;</span><br><span class="line"><span class="meta">$</span> cd &lt;folder&gt;</span><br><span class="line"><span class="meta">$</span> npm install</span><br></pre></td></tr></table></figure></p>
@@ -336,221 +337,54 @@
 <p>完了直接修改站点配置文件_config.yml即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br></pre></td></tr></table></figure></p>
 <p>当然搜索引擎还有一些细节，例如修改field可修改引擎覆盖范围等等，可参考对应文档</p>
 
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/配置/" rel="tag"># 配置</a>
+            
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/20/csapp信息的表示与处理/" rel="next" title="CSAPP信息的表示与处理">
+                  <i class="fa fa-chevron-left"></i> CSAPP信息的表示与处理
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/20/csapp信息的表示与处理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yi Zhou">
-      <meta itemprop="description" content="姑妄言之姑听之">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yi's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/20/csapp信息的表示与处理/" class="post-title-link" itemprop="url">CSAPP信息的表示与处理</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-20 17:12:48 / Modified: 21:12:03" itemprop="dateCreated datePublished" datetime="2019-09-20T17:12:48+08:00">2019-09-20</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统/" itemprop="url" rel="index"><span itemprop="name">系统</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统/二进制/" itemprop="url" rel="index"><span itemprop="name">二进制</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。</p>
-<p>众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其他进制的表示方法，而采用二进制。</p>
-<p>值得一提的是，上个世纪70、80年代，苏联有科学家研究过三进制的计算机，半导体元器件有+1、0、-1三种形态，可以表示三进制，但是后来随着资金的撤出，三进制计算机流产。</p>
-<h2 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h2><h3 id="无符号数（unsigned-number）"><a href="#无符号数（unsigned-number）" class="headerlink" title="无符号数（unsigned number）"></a>无符号数（unsigned number）</h3><p>通常的计算机中，用多位二进制码来表示一个整数（通常为32位或者64位），而其中如果最高位不用作符号位，则该表示方法为unsigned，c语言中就有unsigned int，unsigned char等等数据形式。</p>
-<p>unsigned数的一般表示范围为: </p>
-<p>$a+b=c$</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/20/LeetCode763-Partition-Labels/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yi Zhou">
-      <meta itemprop="description" content="姑妄言之姑听之">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yi's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/20/LeetCode763-Partition-Labels/" class="post-title-link" itemprop="url">LeetCode763 Partition Labels</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-20 15:11:25 / Modified: 20:05:43" itemprop="dateCreated datePublished" datetime="2019-09-20T15:11:25+08:00">2019-09-20</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;ababcbacadefegdehijhklij&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output: [9,7,8]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Explanation:</span><br><span class="line">The partition is &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;.</span><br><span class="line">This is a partition so that each letter appears in at most one part.</span><br><span class="line">A partition like &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; is incorrect, because it splits S into less parts.</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>根据题意，我们是要将一个字符串划分为若干个区间，任何单个的字符都只能出现在一个区间内，通过简单的模拟题意，很容易发现，这是一个可以利用贪心得以解决的问题。</p>
-<p>先扫一遍字符串，求出每个字符开始位置和终止位置。在第二次扫描时，每次向后读取一个字符，更新最大终止位置，求出区间长度，当扫描的index到达当前最大终止位置，则说明这段区间所有的字符都出现且仅出现在该区间内，此时保存位置即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] last = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); ++i)</span><br><span class="line">        last[S.charAt(i) - <span class="string">'a'</span>] = i;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>, anchor = <span class="number">0</span>;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); ++i) &#123;</span><br><span class="line">        j = Math.max(j, last[S.charAt(i) - <span class="string">'a'</span>]);</span><br><span class="line">        <span class="keyword">if</span> (i == j) &#123;</span><br><span class="line">            res.add(i - anchor + <span class="number">1</span>);</span><br><span class="line">            anchor = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
-<li>如果需要对英文或者数字字符进行hash，可以直接使用数组，不必从头再建立一个HashMap</li>
-<li>本题曾出现在Amazon OA中</li>
-</ol>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
@@ -569,6 +403,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -581,6 +420,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-number">1.</span> <span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、hexo建站"><span class="nav-number">2.</span> <span class="nav-text">2、hexo建站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题选择"><span class="nav-number">3.</span> <span class="nav-text">主题选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、添加公式渲染"><span class="nav-number">4.</span> <span class="nav-text">3、添加公式渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步"><span class="nav-number">4.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步"><span class="nav-number">4.2.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步"><span class="nav-number">4.3.</span> <span class="nav-text">第三步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步"><span class="nav-number">4.4.</span> <span class="nav-text">第四步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五步"><span class="nav-number">4.5.</span> <span class="nav-text">第五步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六步"><span class="nav-number">4.6.</span> <span class="nav-text">第六步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、添加本站搜索引擎"><span class="nav-number">5.</span> <span class="nav-text">4、添加本站搜索引擎</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -744,7 +585,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -761,66 +602,6 @@
 
   
 
-  
-    
-      
-    
-      
-        
-      
-    
-      
-    
-  
-    
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
-    
   
 
   
