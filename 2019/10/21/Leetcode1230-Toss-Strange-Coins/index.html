@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目描述A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representin">
-<meta name="keywords" content="LeetCode,Algorithms,Amazon,Greedy">
+  <meta name="description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
+<meta name="keywords" content="LeetCode,Algorithms,Amazon,Dynamic Programming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode763 Partition Labels">
-<meta property="og:url" content="http://earthaa.github.io/2019/09/20/LeetCode763-Partition-Labels/index.html">
+<meta property="og:title" content="Leetcode1230 Toss Strange Coins">
+<meta property="og:url" content="http://earthaa.github.io/2019/10/21/Leetcode1230-Toss-Strange-Coins/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="题目描述A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representin">
+<meta property="og:description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T02:40:18.170Z">
+<meta property="og:updated_time" content="2019-10-22T02:39:07.994Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode763 Partition Labels">
-<meta name="twitter:description" content="题目描述A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representin">
-  <link rel="canonical" href="http://earthaa.github.io/2019/09/20/LeetCode763-Partition-Labels/">
+<meta name="twitter:title" content="Leetcode1230 Toss Strange Coins">
+<meta name="twitter:description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
+  <link rel="canonical" href="http://earthaa.github.io/2019/10/21/Leetcode1230-Toss-Strange-Coins/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>LeetCode763 Partition Labels | Yi's Blog</title>
+  <title>Leetcode1230 Toss Strange Coins | Yi's Blog</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/20/LeetCode763-Partition-Labels/">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/21/Leetcode1230-Toss-Strange-Coins/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -264,7 +264,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">LeetCode763 Partition Labels
+        <h1 class="post-title" itemprop="name headline">Leetcode1230 Toss Strange Coins
 
           
         </h1>
@@ -280,19 +280,11 @@
                 
               
 
-              <time title="Created: 2019-09-20 15:11:25" itemprop="dateCreated datePublished" datetime="2019-09-20T15:11:25-07:00">2019-09-20</time>
+              <time title="Created: 2019-10-21 19:18:42 / Modified: 19:39:07" itemprop="dateCreated datePublished" datetime="2019-10-21T19:18:42-07:00">2019-10-21</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-21 19:40:18" itemprop="dateModified" datetime="2019-10-21T19:40:18-07:00">2019-10-21</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -320,16 +312,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.<br><a id="more"></a><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;ababcbacadefegdehijhklij&quot;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output: [9,7,8]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Explanation:</span><br><span class="line">The partition is &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;.</span><br><span class="line">This is a partition so that each letter appears in at most one part.</span><br><span class="line">A partition like &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; is incorrect, because it splits S into less parts.</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>根据题意，我们是要将一个字符串划分为若干个区间，任何单个的字符都只能出现在一个区间内，通过简单的模拟题意，很容易发现，这是一个可以利用贪心得以解决的问题。</p>
-<p>先扫一遍字符串，求出每个字符开始位置和终止位置。在第二次扫描时，每次向后读取一个字符，更新最大终止位置，求出区间长度，当扫描的index到达当前最大终止位置，则说明这段区间所有的字符都出现且仅出现在该区间内，此时保存位置即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] last = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); ++i)</span><br><span class="line">        last[S.charAt(i) - <span class="string">'a'</span>] = i;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>, anchor = <span class="number">0</span>;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); ++i) &#123;</span><br><span class="line">        j = Math.max(j, last[S.charAt(i) - <span class="string">'a'</span>]);</span><br><span class="line">        <span class="keyword">if</span> (i == j) &#123;</span><br><span class="line">            res.add(i - anchor + <span class="number">1</span>);</span><br><span class="line">            anchor = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
-<li>如果需要对英文或者数字字符进行hash，可以直接使用数组，不必从头再建立一个HashMap</li>
-<li>本题曾出现在Amazon OA中</li>
-</ol>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed.</p>
+<p>Return the probability that the number of coins facing heads equals target if you toss every coin exactly once.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example1:</span><br><span class="line">Input: prob = [0.4], target = 1</span><br><span class="line">Output: 0.40000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example2:</span><br><span class="line">Input: prob = [0.5,0.5,0.5,0.5,0.5], target = 0</span><br><span class="line">Output: 0.03125</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Explanation:</span><br><span class="line">[[3,1]] is also accepted.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Constraints:</span><br><span class="line">1 &lt;= prob.length &lt;= 1000</span><br><span class="line">0 &lt;= prob[i] &lt;= 1</span><br><span class="line">0 &lt;= target &lt;= prob.length</span><br><span class="line">Answers will be accepted as correct if they are within 10^-5 of the correct answer.</span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><a id="more"></a>
+<p>题目是这样的，有一堆不均匀的硬币，问你正好target朝上的概率是多少？</p>
+<p>这是一道典型的动态规划问题，多举出一些样例，或者根据基础的概率论，我们可以发现每个硬币都有正反两种可能性，而到第i个硬币正好有j个朝上的概率跟此前的状态有关，我们用dp[i][j]来表示，显然第i个硬币可以朝上或者朝下，如果朝上则前面得有j - 1个硬币朝上，才能保证此时有共有j个朝上，如果此前已经有j个朝上，则第i个必须朝下，于是我们很容易得到递推式:</p>
+<script type="math/tex; mode=display">dp(i, j) = dp(i - 1, j) * (1 - p(i)) + dp(i - 1, j - 1) * p(i)</script><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">probabilityOfHeads</span><span class="params">(<span class="keyword">double</span>[] prob, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span>[][] dp = <span class="keyword">new</span> <span class="keyword">double</span>[prob.length][target + <span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span> - prob[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span>(target &gt;= <span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">1</span>] = prob[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prob.length; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= Math.min(i + <span class="number">1</span>, target); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j == <span class="number">0</span>)</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] * (<span class="number">1.0</span> - prob[i]);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] * (<span class="number">1.0</span> - prob[i]) + dp[i - <span class="number">1</span>][j - <span class="number">1</span>] * prob[i];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[prob.length - <span class="number">1</span>][target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不过这道题，还可以再做空间上的优化，我们发现求dp[i][j]只跟dp[i - 1][j - 1]与dp[i][j - 1]有关，遇到这种情况，我们可以把i利用循环优化掉，只保留j，即dp[j]表示此时有j个朝上的硬币的概率，于是我们可以得到更加简化的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">probabilityOfHeads</span><span class="params">(<span class="keyword">double</span>[] prob, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span>[] dp = <span class="keyword">new</span> <span class="keyword">double</span>[target + <span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prob.length; ++i)</span><br><span class="line">    <span class="comment">//这边很容易出错，我们需要倒序遍历，否则之前的值(dp[j - 1])已经被修改</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = Math.min(i + <span class="number">1</span>, target); j &gt;= <span class="number">0</span>; --k)</span><br><span class="line">            dp[j] = (j &gt; <span class="number">0</span> ? dp[j - <span class="number">1</span>] : <span class="number">0</span>) * prob[i] + dp[j] * (<span class="number">1</span> - prob[i]);</span><br><span class="line">    <span class="keyword">return</span> dp[target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -351,7 +344,7 @@
             
               <a href="/tags/Amazon/" rel="tag"># Amazon</a>
             
-              <a href="/tags/Greedy/" rel="tag"># Greedy</a>
+              <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
             
           </div>
         
@@ -361,15 +354,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/" rel="next" title="Leetcode1192 Critical Coneections in a Network">
+                  <i class="fa fa-chevron-left"></i> Leetcode1192 Critical Coneections in a Network
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/20/csapp信息的表示与处理/" rel="prev" title="CSAPP信息的表示与处理">
-                  CSAPP信息的表示与处理 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -418,7 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">4.</span> <span class="nav-text">Tips</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

@@ -56,18 +56,18 @@
 </script>
 
   <meta name="description" content="题目描述There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any">
-<meta name="keywords" content="LeetCode,Algorithms,Amazon,Graph">
+<meta name="keywords" content="LeetCode,Graph,Algorithms,Amazon">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode1192-Critical-Coneections-in-a-Network">
+<meta property="og:title" content="Leetcode1192 Critical Coneections in a Network">
 <meta property="og:url" content="http://earthaa.github.io/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="题目描述There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png">
 <meta property="og:image" content="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Bridge2-300x176.png">
-<meta property="og:updated_time" content="2019-10-21T20:47:18.183Z">
+<meta property="og:updated_time" content="2019-10-22T02:40:05.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode1192-Critical-Coneections-in-a-Network">
+<meta name="twitter:title" content="Leetcode1192 Critical Coneections in a Network">
 <meta name="twitter:description" content="题目描述There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any">
 <meta name="twitter:image" content="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png">
   <link rel="canonical" href="http://earthaa.github.io/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/">
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title>Leetcode1192-Critical-Coneections-in-a-Network | Yi's Blog</title>
+  <title>Leetcode1192 Critical Coneections in a Network | Yi's Blog</title>
   
 
 
@@ -116,9 +116,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
@@ -267,7 +267,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode1192-Critical-Coneections-in-a-Network
+        <h1 class="post-title" itemprop="name headline">Leetcode1192 Critical Coneections in a Network
 
           
         </h1>
@@ -283,7 +283,7 @@
                 
               
 
-              <time title="Created: 2019-10-21 13:28:15 / Modified: 13:47:18" itemprop="dateCreated datePublished" datetime="2019-10-21T13:28:15-07:00">2019-10-21</time>
+              <time title="Created: 2019-10-21 13:28:15 / Modified: 19:40:05" itemprop="dateCreated datePublished" datetime="2019-10-21T13:28:15-07:00">2019-10-21</time>
             </span>
           
             
@@ -317,15 +317,14 @@
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any server can reach any other server directly or indirectly through the network.</p>
 <p>A critical connection is a connection that, if removed, will make some server unable to reach some other server.</p>
-<p>Return all critical connections in the network in any order.</p>
-<p><img alt src="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png" style="width: 198px; height: 248px;"><br><img alt src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Bridge2-300x176.png"></p>
+<p>Return all critical connections in the network in any order.<br><a id="more"></a><br><img alt src="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png" style="width: 198px; height: 248px;"><br><img alt src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Bridge2-300x176.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = 4, connections = [[0,1],[1,2],[2,0],[1,3]]</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output: [[1,3]]</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Explanation:</span><br><span class="line">[[3,1]] is also accepted.</span><br></pre></td></tr></table></figure>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是Amazon OA上的一道题，可以利用Trajan算法解决，说实话，这种考法比较无聊，如果你熟悉Tarjan就能轻松秒杀，反之死活想不出来，没有什么区分度，不过既然亚麻考了这题，还是有必要熟悉下的，我OA没有碰到，但有准备过。</p>
 <p>这道题目的关键是理解Bridge的含义，即连通两个连通分量的桥，根据观察我们可以发现这个Critical Connection或者说Bridge不应该出现在一个环里，Tarjan算法的核心在于，找到环，它采用了一种比较巧妙的思路，即记录每个节点第一次发现的位置，如果没有环，显然这个位置是不断增大的，如果发现某个节点可以通往比它位置小的节点则说明出现了环。</p>
 <p>理解了这个思路，用DFS搜索图，保存第一次出现的位置和所能到达的最小位置，如果前者小于后者，则说明没有环，则这条路径是Bridge也就是Critical Connection</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; criticalConnections(<span class="keyword">int</span> n, List&lt;List&lt;Integer&gt;&gt; connections) &#123;</span><br><span class="line">	<span class="keyword">int</span>[] disc = <span class="keyword">new</span> <span class="keyword">int</span>[n], low = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">	<span class="comment">// use adjacency list instead of matrix will save some memory, adjmatrix will cause MLE</span></span><br><span class="line">	List&lt;Integer&gt;[] graph = <span class="keyword">new</span> ArrayList[n];</span><br><span class="line">	List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	Arrays.fill(disc, -<span class="number">1</span>); <span class="comment">// use disc to track if visited (disc[i] == -1)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		graph[i] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// build graph</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; connections.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> from = connections.get(i).get(<span class="number">0</span>), to = connections.get(i).get(<span class="number">1</span>);</span><br><span class="line">		graph[from].add(to);</span><br><span class="line">		graph[to].add(from);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (disc[i] == -<span class="number">1</span>) &#123;</span><br><span class="line">			dfs(i, low, disc, graph, res, i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> time = <span class="number">0</span>; <span class="comment">// time when discover each vertex</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span>[] low, <span class="keyword">int</span>[] disc, List&lt;Integer&gt;[] graph, List&lt;List&lt;Integer&gt;&gt; res, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">	disc[u] = low[u] = ++time; <span class="comment">// discover u</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; graph[u].size(); j++) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = graph[u].get(j);</span><br><span class="line">		<span class="keyword">if</span> (v == pre) &#123;</span><br><span class="line">			<span class="keyword">continue</span>; <span class="comment">// if parent vertex, ignore</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (disc[v] == -<span class="number">1</span>) &#123; <span class="comment">// if not discovered</span></span><br><span class="line">			dfs(v, low, disc, graph, res, u);</span><br><span class="line">			low[u] = Math.min(low[u], low[v]);</span><br><span class="line">			<span class="keyword">if</span> (low[v] &gt; disc[u]) &#123;</span><br><span class="line">				<span class="comment">// u - v is critical, there is no path for v to reach back to u or previous vertices of u</span></span><br><span class="line">				res.add(Arrays.asList(u, v));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123; <span class="comment">// if v discovered and is not parent of u, update low[u], cannot use low[v] because u is not subtree of v</span></span><br><span class="line">			low[u] = Math.min(low[u], disc[v]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; criticalConnections(<span class="keyword">int</span> n, List&lt;List&lt;Integer&gt;&gt; connections) &#123;</span><br><span class="line">	<span class="keyword">int</span>[] disc = <span class="keyword">new</span> <span class="keyword">int</span>[n], low = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">	<span class="comment">// use adjacency list instead of matrix will save some memory, adjmatrix will cause MLE</span></span><br><span class="line">	List&lt;Integer&gt;[] graph = <span class="keyword">new</span> ArrayList[n];</span><br><span class="line">	List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	Arrays.fill(disc, -<span class="number">1</span>); <span class="comment">// use disc to track if visited (disc[i] == -1)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		graph[i] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// build graph</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; connections.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> from = connections.get(i).get(<span class="number">0</span>), to = connections.get(i).get(<span class="number">1</span>);</span><br><span class="line">		graph[from].add(to);</span><br><span class="line">		graph[to].add(from);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (disc[i] == -<span class="number">1</span>) &#123;</span><br><span class="line">			dfs(i, low, disc, graph, res, i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> time = <span class="number">0</span>; <span class="comment">// time when discover each vertex</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span>[] low, <span class="keyword">int</span>[] disc, List&lt;Integer&gt;[] graph, List&lt;List&lt;Integer&gt;&gt; res, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">	disc[u] = low[u] = ++time; <span class="comment">// discover u</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; graph[u].size(); j++) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = graph[u].get(j);</span><br><span class="line">		<span class="keyword">if</span> (v == pre) &#123;</span><br><span class="line">			<span class="keyword">continue</span>; <span class="comment">// if parent vertex, ignore</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (disc[v] == -<span class="number">1</span>) &#123; <span class="comment">// if not discovered</span></span><br><span class="line">			dfs(v, low, disc, graph, res, u);</span><br><span class="line">			low[u] = Math.min(low[u], low[v]);</span><br><span class="line">			<span class="keyword">if</span> (low[v] &gt; disc[u]) &#123;</span><br><span class="line">				<span class="comment">// u - v is critical, there is no path for v to reach back to u or previous vertices of u</span></span><br><span class="line">				res.add(Arrays.asList(u, v));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123; <span class="comment">// if v discovered and is not parent of u, update low[u], cannot use low[v] because u is not subtree of v</span></span><br><span class="line">			low[u] = Math.min(low[u], disc[v]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -343,11 +342,11 @@
             
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
             
+              <a href="/tags/Graph/" rel="tag"># Graph</a>
+            
               <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
             
               <a href="/tags/Amazon/" rel="tag"># Amazon</a>
-            
-              <a href="/tags/Graph/" rel="tag"># Graph</a>
             
           </div>
         
@@ -366,6 +365,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/21/Leetcode1230-Toss-Strange-Coins/" rel="prev" title="Leetcode1230 Toss Strange Coins">
+                  Leetcode1230 Toss Strange Coins <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -432,7 +435,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -458,7 +461,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>

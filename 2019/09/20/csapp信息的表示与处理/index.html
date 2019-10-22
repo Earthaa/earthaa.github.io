@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="前言本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。 众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-20T13:12:03.649Z">
+<meta property="og:updated_time" content="2019-10-22T02:40:34.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP信息的表示与处理">
 <meta name="twitter:description" content="前言本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。 众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其">
@@ -113,9 +113,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
@@ -280,11 +280,19 @@
                 
               
 
-              <time title="Created: 2019-09-20 17:12:48 / Modified: 06:12:03" itemprop="dateCreated datePublished" datetime="2019-09-20T17:12:48-07:00">2019-09-20</time>
+              <time title="Created: 2019-09-20 17:12:48" itemprop="dateCreated datePublished" datetime="2019-09-20T17:12:48-07:00">2019-09-20</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 19:40:34" itemprop="dateModified" datetime="2019-10-21T19:40:34-07:00">2019-10-21</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -320,7 +328,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。</p>
-<p>众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其他进制的表示方法，而采用二进制。</p>
+<p>众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其他进制的表示方法，而采用二进制。<br><a id="more"></a></p>
 <p>值得一提的是，上个世纪70、80年代，苏联有科学家研究过三进制的计算机，半导体元器件有+1、0、-1三种形态，可以表示三进制，但是后来随着资金的撤出，三进制计算机流产。</p>
 <h2 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h2><h3 id="无符号数（unsigned-number）"><a href="#无符号数（unsigned-number）" class="headerlink" title="无符号数（unsigned number）"></a>无符号数（unsigned number）</h3><p>通常的计算机中，用多位二进制码来表示一个整数（通常为32位或者64位），而其中如果最高位不用作符号位，则该表示方法为unsigned，c语言中就有unsigned int，unsigned char等等数据形式。</p>
 <p>unsigned数的一般表示范围为: </p>
@@ -435,7 +443,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -461,7 +469,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
