@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T02:39:07.994Z">
+<meta property="og:updated_time" content="2019-10-23T00:57:12.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode1230 Toss Strange Coins">
 <meta name="twitter:description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
@@ -113,9 +113,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
@@ -280,11 +280,19 @@
                 
               
 
-              <time title="Created: 2019-10-21 19:18:42 / Modified: 19:39:07" itemprop="dateCreated datePublished" datetime="2019-10-21T19:18:42-07:00">2019-10-21</time>
+              <time title="Created: 2019-10-21 19:18:42" itemprop="dateCreated datePublished" datetime="2019-10-21T19:18:42-07:00">2019-10-21</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-22 17:57:12" itemprop="dateModified" datetime="2019-10-22T17:57:12-07:00">2019-10-22</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -576,7 +584,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -593,6 +601,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
   
 
   

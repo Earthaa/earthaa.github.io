@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="1、前言利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T02:40:26.387Z">
+<meta property="og:updated_time" content="2019-10-23T00:54:07.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo配置">
 <meta name="twitter:description" content="1、前言利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文">
@@ -113,9 +113,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
@@ -291,7 +291,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-21 19:40:26" itemprop="dateModified" datetime="2019-10-21T19:40:26-07:00">2019-10-21</time>
+                <time title="Modified: 2019-10-22 17:54:07" itemprop="dateModified" datetime="2019-10-22T17:54:07-07:00">2019-10-22</time>
               </span>
             
           
@@ -597,7 +597,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -614,6 +614,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
   
 
   
