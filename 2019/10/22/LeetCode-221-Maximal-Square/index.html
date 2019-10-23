@@ -55,19 +55,21 @@
   };
 </script>
 
-  <meta name="description" content="前言本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。 众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其">
-<meta name="keywords" content="CSAPP,符号数,无符号数,浮点数">
+  <meta name="description" content="题目描述Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area. 12345678Input: 1 0 1 0 01 0 1 1 11 1 1 1 11 0 0 1 0Output: 4 解析">
+<meta name="keywords" content="LeetCode,Algorithms,Dynamic Programming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP信息的表示与处理">
-<meta property="og:url" content="http://earthaa.github.io/2019/09/20/csapp信息的表示与处理/index.html">
+<meta property="og:title" content="LeetCode-221-Maximal-Square">
+<meta property="og:url" content="http://earthaa.github.io/2019/10/22/LeetCode-221-Maximal-Square/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="前言本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。 众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其">
+<meta property="og:description" content="题目描述Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area. 12345678Input: 1 0 1 0 01 0 1 1 11 1 1 1 11 0 0 1 0Output: 4 解析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-23T00:57:06.232Z">
+<meta property="og:image" content="https://leetcode.com/media/original_images/221_Maximal_Square.PNG?raw=true">
+<meta property="og:updated_time" content="2019-10-23T01:22:21.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP信息的表示与处理">
-<meta name="twitter:description" content="前言本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。 众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其">
-  <link rel="canonical" href="http://earthaa.github.io/2019/09/20/csapp信息的表示与处理/">
+<meta name="twitter:title" content="LeetCode-221-Maximal-Square">
+<meta name="twitter:description" content="题目描述Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area. 12345678Input: 1 0 1 0 01 0 1 1 11 1 1 1 11 0 0 1 0Output: 4 解析">
+<meta name="twitter:image" content="https://leetcode.com/media/original_images/221_Maximal_Square.PNG?raw=true">
+  <link rel="canonical" href="http://earthaa.github.io/2019/10/22/LeetCode-221-Maximal-Square/">
 
 
 <script id="page-configurations">
@@ -81,7 +83,7 @@
   };
 </script>
 
-  <title>CSAPP信息的表示与处理 | Yi's Blog</title>
+  <title>LeetCode-221-Maximal-Square | Yi's Blog</title>
   
 
 
@@ -252,7 +254,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/20/csapp信息的表示与处理/">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/22/LeetCode-221-Maximal-Square/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -264,7 +266,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">CSAPP信息的表示与处理
+        <h1 class="post-title" itemprop="name headline">LeetCode-221-Maximal-Square
 
           
         </h1>
@@ -280,19 +282,11 @@
                 
               
 
-              <time title="Created: 2019-09-20 17:12:48" itemprop="dateCreated datePublished" datetime="2019-09-20T17:12:48-07:00">2019-09-20</time>
+              <time title="Created: 2019-10-22 18:06:48 / Modified: 18:22:21" itemprop="dateCreated datePublished" datetime="2019-10-22T18:06:48-07:00">2019-10-22</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-22 17:57:06" itemprop="dateModified" datetime="2019-10-22T17:57:06-07:00">2019-10-22</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -301,14 +295,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统/" itemprop="url" rel="index"><span itemprop="name">系统</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统/二进制/" itemprop="url" rel="index"><span itemprop="name">二进制</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -327,12 +314,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。</p>
-<p>众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其他进制的表示方法，而采用二进制。<br><a id="more"></a></p>
-<p>值得一提的是，上个世纪70、80年代，苏联有科学家研究过三进制的计算机，半导体元器件有+1、0、-1三种形态，可以表示三进制，但是后来随着资金的撤出，三进制计算机流产。</p>
-<h2 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h2><h3 id="无符号数（unsigned-number）"><a href="#无符号数（unsigned-number）" class="headerlink" title="无符号数（unsigned number）"></a>无符号数（unsigned number）</h3><p>通常的计算机中，用多位二进制码来表示一个整数（通常为32位或者64位），而其中如果最高位不用作符号位，则该表示方法为unsigned，c语言中就有unsigned int，unsigned char等等数据形式。</p>
-<p>unsigned数的一般表示范围为: </p>
-<p>$a+b=c$</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line"></span><br><span class="line">1 0 1 0 0</span><br><span class="line">1 0 1 1 1</span><br><span class="line">1 1 1 1 1</span><br><span class="line">1 0 0 1 0</span><br><span class="line"></span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><a id="more"></a>
+<p>题目给了一堆0和1组成的矩阵，问矩阵中由1组成的方块的最大面积</p>
+<p>这是我本人非常喜欢的一道题目，描述得十分简洁，实现算法从暴力到DP，能够体现出计算机科学以及算法的优雅，暴力的方法非常显而易见，穷尽所有的可能性，一行一行，发现连续的1则往下继续探索，看看是否满足方阵的要求，即长宽相等，Leetcode官方题解给出的代码如下，而且居然能够AC，可见样例比较弱<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximalSquare</span><span class="params">(<span class="keyword">char</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length, cols = rows &gt; <span class="number">0</span> ? matrix[<span class="number">0</span>].length : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxsqlen = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cols; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (matrix[i][j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> sqlen = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">while</span> (sqlen + i &lt; rows &amp;&amp; sqlen + j &lt; cols &amp;&amp; flag) &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &lt;= sqlen + j; k++) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (matrix[i + sqlen][k] == <span class="string">'0'</span>) &#123;</span><br><span class="line">                                flag = <span class="keyword">false</span>;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt;= sqlen + i; k++) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (matrix[k][j + sqlen] == <span class="string">'0'</span>) &#123;</span><br><span class="line">                                flag = <span class="keyword">false</span>;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span> (flag)</span><br><span class="line">                            sqlen++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (maxsqlen &lt; sqlen) &#123;</span><br><span class="line">                        maxsqlen = sqlen;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxsqlen * maxsqlen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过这题还有一个更为巧妙的方法，利用dp，我们用dp[i][j]来表示以(i, j)为右下角的方阵的边长，如图：</p>
+<p><img alt src="https://leetcode.com/media/original_images/221_Maximal_Square.PNG?raw=true"></p>
+<p>递推公式如下：</p>
+<script type="math/tex; mode=display">dp(i ,j) = min(dp(i,j-1), dp(i - 1,j),dp(i-1,j-1))+1</script><p>根据递推公式，就能够用少量代码十分优雅地解决这个问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximalSquare</span><span class="params">(<span class="keyword">char</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[matrix.length][matrix[<span class="number">0</span>].length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; matrix[<span class="number">0</span>].length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> left = i - <span class="number">1</span> &gt; -<span class="number">1</span> ? dp[i - <span class="number">1</span>][j] : <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">int</span> up = j - <span class="number">1</span> &gt; - <span class="number">1</span> ? dp[i][j - <span class="number">1</span>] : <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">int</span> dig = i - <span class="number">1</span> &gt; - <span class="number">1</span> &amp;&amp; j - <span class="number">1</span> &gt; -<span class="number">1</span> ? dp[i - <span class="number">1</span>][j - <span class="number">1</span>] : <span class="number">0</span>;</span><br><span class="line">                    dp[i][j] = <span class="number">1</span> + Math.min(left, Math.min(up,dig));</span><br><span class="line">                    <span class="comment">// 注意这里dp存的是边长，结果要返回面积</span></span><br><span class="line">                    res = Math.max(res, dp[i][j] * dp[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$O(mn)$，空间复杂度为$O(mn)$，其中m、n为矩阵长宽</p>
+<h2 id="Follow-Up"><a href="#Follow-Up" class="headerlink" title="Follow Up"></a>Follow Up</h2><p>如果要找一个最大矩形的面积呢？ </p>
 
     </div>
 
@@ -348,13 +341,11 @@
           
           <div class="post-tags">
             
-              <a href="/tags/CSAPP/" rel="tag"># CSAPP</a>
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
             
-              <a href="/tags/符号数/" rel="tag"># 符号数</a>
+              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
             
-              <a href="/tags/无符号数/" rel="tag"># 无符号数</a>
-            
-              <a href="/tags/浮点数/" rel="tag"># 浮点数</a>
+              <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
             
           </div>
         
@@ -364,8 +355,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/20/LeetCode763-Partition-Labels/" rel="next" title="LeetCode763 Partition Labels">
-                  <i class="fa fa-chevron-left"></i> LeetCode763 Partition Labels
+                <a href="/2019/10/21/Leetcode1230-Toss-Strange-Coins/" rel="next" title="Leetcode1230 Toss Strange Coins">
+                  <i class="fa fa-chevron-left"></i> Leetcode1230 Toss Strange Coins
                 </a>
               
             </div>
@@ -373,10 +364,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/21/hexo配置/" rel="prev" title="hexo配置">
-                  hexo配置 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -425,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数的表示"><span class="nav-number">2.</span> <span class="nav-text">整数的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无符号数（unsigned-number）"><span class="nav-number">2.1.</span> <span class="nav-text">无符号数（unsigned number）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Follow-Up"><span class="nav-number">3.</span> <span class="nav-text">Follow Up</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

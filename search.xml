@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>LeetCode-221-Maximal-Square</title>
+      <link href="/2019/10/22/LeetCode-221-Maximal-Square/"/>
+      <url>/2019/10/22/LeetCode-221-Maximal-Square/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line"></span><br><span class="line">1 0 1 0 0</span><br><span class="line">1 0 1 1 1</span><br><span class="line">1 1 1 1 1</span><br><span class="line">1 0 0 1 0</span><br><span class="line"></span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><a id="more"></a><p>题目给了一堆0和1组成的矩阵，问矩阵中由1组成的方块的最大面积</p><p>这是我本人非常喜欢的一道题目，描述得十分简洁，实现算法从暴力到DP，能够体现出计算机科学以及算法的优雅，暴力的方法非常显而易见，穷尽所有的可能性，一行一行，发现连续的1则往下继续探索，看看是否满足方阵的要求，即长宽相等，Leetcode官方题解给出的代码如下，而且居然能够AC，可见样例比较弱<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximalSquare</span><span class="params">(<span class="keyword">char</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length, cols = rows &gt; <span class="number">0</span> ? matrix[<span class="number">0</span>].length : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxsqlen = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cols; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (matrix[i][j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> sqlen = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">while</span> (sqlen + i &lt; rows &amp;&amp; sqlen + j &lt; cols &amp;&amp; flag) &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &lt;= sqlen + j; k++) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (matrix[i + sqlen][k] == <span class="string">'0'</span>) &#123;</span><br><span class="line">                                flag = <span class="keyword">false</span>;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt;= sqlen + i; k++) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (matrix[k][j + sqlen] == <span class="string">'0'</span>) &#123;</span><br><span class="line">                                flag = <span class="keyword">false</span>;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span> (flag)</span><br><span class="line">                            sqlen++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (maxsqlen &lt; sqlen) &#123;</span><br><span class="line">                        maxsqlen = sqlen;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxsqlen * maxsqlen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>不过这题还有一个更为巧妙的方法，利用dp，我们用dp[i][j]来表示以(i, j)为右下角的方阵的边长，如图：</p><p><img alt src="https://leetcode.com/media/original_images/221_Maximal_Square.PNG?raw=true"></p><p>递推公式如下：</p><script type="math/tex; mode=display">dp(i ,j) = min(dp(i,j-1), dp(i - 1,j),dp(i-1,j-1))+1</script><p>根据递推公式，就能够用少量代码十分优雅地解决这个问题</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximalSquare</span><span class="params">(<span class="keyword">char</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[matrix.length][matrix[<span class="number">0</span>].length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; matrix[<span class="number">0</span>].length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> left = i - <span class="number">1</span> &gt; -<span class="number">1</span> ? dp[i - <span class="number">1</span>][j] : <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">int</span> up = j - <span class="number">1</span> &gt; - <span class="number">1</span> ? dp[i][j - <span class="number">1</span>] : <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">int</span> dig = i - <span class="number">1</span> &gt; - <span class="number">1</span> &amp;&amp; j - <span class="number">1</span> &gt; -<span class="number">1</span> ? dp[i - <span class="number">1</span>][j - <span class="number">1</span>] : <span class="number">0</span>;</span><br><span class="line">                    dp[i][j] = <span class="number">1</span> + Math.min(left, Math.min(up,dig));</span><br><span class="line">                    <span class="comment">// 注意这里dp存的是边长，结果要返回面积</span></span><br><span class="line">                    res = Math.max(res, dp[i][j] * dp[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>时间复杂度为$O(mn)$，空间复杂度为$O(mn)$，其中m、n为矩阵长宽</p><h2 id="Follow-Up"><a href="#Follow-Up" class="headerlink" title="Follow Up"></a>Follow Up</h2><p>如果要找一个最大矩形的面积呢？ </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> Algorithms </tag>
+            
+            <tag> Dynamic Programming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode1230 Toss Strange Coins</title>
       <link href="/2019/10/21/Leetcode1230-Toss-Strange-Coins/"/>
       <url>/2019/10/21/Leetcode1230-Toss-Strange-Coins/</url>
@@ -53,11 +82,11 @@
             
             <tag> LeetCode </tag>
             
+            <tag> Graph </tag>
+            
             <tag> Algorithms </tag>
             
             <tag> Amazon </tag>
-            
-            <tag> Graph </tag>
             
         </tags>
       
@@ -144,11 +173,11 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Greedy </tag>
-            
             <tag> Algorithms </tag>
             
             <tag> Amazon </tag>
+            
+            <tag> Greedy </tag>
             
         </tags>
       
