@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>LeetCode162 Find Peak Element</title>
+      <link href="/2019/10/27/LeetCode162-Find-Peak-Element/"/>
+      <url>/2019/10/27/LeetCode162-Find-Peak-Element/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A peak element is an element that is greater than its neighbors.</p><p>Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.</p><p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p><p>You may imagine that nums[-1] = nums[n] = -∞.<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 3 is a peak element and your function should return the index number 2.</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,1,3,5,6,4]</span><br><span class="line">Output: 1 or 5 </span><br><span class="line">Explanation: Your function can return either index number 1 where the peak element is 2, </span><br><span class="line">             or index number 5 where the peak element is 6.</span><br></pre></td></tr></table></figure><p>Your solution should be in <strong>logarithmic</strong> complexity.</p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>题意十分简短，也很好理解，就是一个数组，找出比左右大的那个数的index，其中最左边和最右边默认都是-∞，一个很直观的思路就扫描一遍，挨个比较左右，时间复杂度为O（n）, 但是题目后面还有一个要求，时间复杂度要为O(logn)。</p><p>显然遇到数组这类题目，O(logn)一个很直观的思路就是二分，不过二分是基于排序好的数组，那这个题目如何二分呢？</p><p>其实注意到num[i] 与 num[i+1]的关系是解决本题的关键，引用下Leetcode解题区的图，这个问题可以分为下面三种情况讨论:</p><p><img alt src="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case1.PNG"></p><p><img alt src="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case2.PNG"></p><p><img alt src="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case3.PNG"></p><p>我们发现peak是一个分界点，在这个分界点左边为上升区间，在这个分界点右边为下降区间，这样二分的思路就变得清晰了起来:</p><p>每次二分取mid，如果我们发现nums[mid] &gt; nums[mid+1]，说明这个mid位于一个下降的区间，peak应该出现在mid左边，则搜算范围应该是[left, mid]<br>如果nums[mid] &lt; nums[mid+1]，则说明mid是在一个上升的区间上，搜索范围则应该是[mid+1, right]<br>注意到题目中说明元素各不相同，我们不需要考虑相等的情况<br>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &gt; nums[mid + <span class="number">1</span>])</span><br><span class="line">            right = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这是一道挺经典的二分变种，考察对二分搜索的认识和灵活使用，问题关键在于发现peak是上升区间和下降区间的分界点利用这个性质来进行二分搜索，挺适合作为面试题来出的，如果我是考官的话:)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> Binary-Search </tag>
+            
+            <tag> Algorithms </tag>
+            
+            <tag> Quora </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode-221-Maximal-Square</title>
       <link href="/2019/10/22/LeetCode-221-Maximal-Square/"/>
       <url>/2019/10/22/LeetCode-221-Maximal-Square/</url>
@@ -53,9 +84,9 @@
             
             <tag> Algorithms </tag>
             
-            <tag> Amazon </tag>
-            
             <tag> Dynamic Programming </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
@@ -82,9 +113,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Graph </tag>
-            
             <tag> Algorithms </tag>
+            
+            <tag> Graph </tag>
             
             <tag> Amazon </tag>
             
