@@ -55,18 +55,21 @@
   };
 </script>
 
-  <meta name="description" content="姑妄言之姑听之">
-<meta name="keywords" content="pen, notes, coding, developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yi&#39;s Blog">
-<meta property="og:url" content="http://earthaa.github.io/tags/Amazon/index.html">
+  <meta name="description" content="题目描述Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.">
+<meta name="keywords" content="LeetCode,Algorithms,Hash Table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode525 Contiguous Array">
+<meta property="og:url" content="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="姑妄言之姑听之">
+<meta property="og:description" content="题目描述Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG">
+<meta property="og:updated_time" content="2019-10-28T21:10:05.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yi&#39;s Blog">
-<meta name="twitter:description" content="姑妄言之姑听之">
-  <link rel="canonical" href="http://earthaa.github.io/tags/Amazon/">
+<meta name="twitter:title" content="Leetcode525 Contiguous Array">
+<meta name="twitter:description" content="题目描述Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.">
+<meta name="twitter:image" content="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG">
+  <link rel="canonical" href="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/">
 
 
 <script id="page-configurations">
@@ -74,13 +77,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: Amazon | Yi's Blog</title>
+  <title>Leetcode525 Contiguous Array | Yi's Blog</title>
   
 
 
@@ -211,24 +214,6 @@
 
     
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
 </nav>
   <div class="site-search">
     <div class="popup search-popup">
@@ -263,118 +248,131 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block tag">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Amazon<small>Tag</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yi Zhou">
+      <meta itemprop="description" content="姑妄言之姑听之">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yi's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Leetcode525 Contiguous Array
+
+          
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-28 11:52:30 / Modified: 14:10:05" itemprop="dateCreated datePublished" datetime="2019-10-28T11:52:30-07:00">2019-10-28</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.<br><a id="more"></a><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1,0]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.</span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是一个题目描述得特别简单的题，不过思路比较tricky，题目要求求一个只含0和1的数组中最长的，含有相同数量0和1的子数组的长度，暴力法O(n^2)遍历所有子数组，这个不难想到，不过题目说数组长度会有50000，有大概率会超时。</p>
+<p>一个Tricky的方法是遍历数组一次，设置一个count，每次遇到1则加一，遇到0则减一，如果同样的count出现两次，则两个index之间的0和1出现次数相等，有一点统计出现一半以上的数字那道题的感觉，也是遇到+1，没有遇到-1，Leetcode官方题解里有一个图很好地说明了这个intuition的原理:</p>
+<p><img alt src="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG"></p>
+<p>这里我们需要用一个HashMap存储count与第一次出现该count的index的对应关系，便于日后查找, 具体代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="number">0</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        sum += nums[i] == <span class="number">1</span> ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(sum))</span><br><span class="line">            res = Math.max(res, i - map.get(sum));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            map.put(sum, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一个描述十分简单的题目，很有意思的一个小技巧，从O(N^2)到O(N)的优化，挺适合作为面试题，不过如果以前没有见过这个技巧，可能很难再面试时期想出，所以，还是要多刷题呀~~</p>
 
-  
-  
+    </div>
 
-  
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+    
+    
         
-          <a class="post-title-link" href="/2019/10/21/Leetcode1230-Toss-Strange-Coins/" itemprop="url">
-            <span itemprop="name">Leetcode1230 Toss Strange Coins</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            
+              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+            
+              <a href="/tags/Hash-Table/" rel="tag"># Hash Table</a>
+            
+          </div>
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-21T19:18:42-07:00"
-              content="2019-10-21">
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/" itemprop="url">
-            <span itemprop="name">Leetcode1192 Critical Coneections in a Network</span>
-          </a>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/27/Leetcode380-Insert-Delete-GetRandom-O1/" rel="next" title="Leetcode380-Insert-Delete-GetRandom-O1">
+                  <i class="fa fa-chevron-left"></i> Leetcode380-Insert-Delete-GetRandom-O1
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-21T13:28:15-07:00"
-              content="2019-10-21">
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/20/LeetCode763-Partition-Labels/" itemprop="url">
-            <span itemprop="name">LeetCode763 Partition Labels</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-20T15:11:25-07:00"
-              content="2019-09-20">
-          09-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    </div>
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -393,6 +391,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -405,6 +408,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 

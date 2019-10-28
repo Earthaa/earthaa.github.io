@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leetcode525 Contiguous Array</title>
+      <link href="/2019/10/28/Leetcode525-Contiguous-Array/"/>
+      <url>/2019/10/28/Leetcode525-Contiguous-Array/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.<br><a id="more"></a><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1,0]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.</span><br></pre></td></tr></table></figure><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是一个题目描述得特别简单的题，不过思路比较tricky，题目要求求一个只含0和1的数组中最长的，含有相同数量0和1的子数组的长度，暴力法O(n^2)遍历所有子数组，这个不难想到，不过题目说数组长度会有50000，有大概率会超时。</p><p>一个Tricky的方法是遍历数组一次，设置一个count，每次遇到1则加一，遇到0则减一，如果同样的count出现两次，则两个index之间的0和1出现次数相等，有一点统计出现一半以上的数字那道题的感觉，也是遇到+1，没有遇到-1，Leetcode官方题解里有一个图很好地说明了这个intuition的原理:</p><p><img alt src="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG"></p><p>这里我们需要用一个HashMap存储count与第一次出现该count的index的对应关系，便于日后查找, 具体代码如下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="number">0</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        sum += nums[i] == <span class="number">1</span> ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(sum))</span><br><span class="line">            res = Math.max(res, i - map.get(sum));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            map.put(sum, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一个描述十分简单的题目，很有意思的一个小技巧，从O(N^2)到O(N)的优化，挺适合作为面试题，不过如果以前没有见过这个技巧，可能很难再面试时期想出，所以，还是要多刷题呀~~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> Algorithms </tag>
+            
+            <tag> Hash Table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode380-Insert-Delete-GetRandom-O1</title>
       <link href="/2019/10/27/Leetcode380-Insert-Delete-GetRandom-O1/"/>
       <url>/2019/10/27/Leetcode380-Insert-Delete-GetRandom-O1/</url>
@@ -51,9 +80,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary-Search </tag>
-            
             <tag> Algorithms </tag>
+            
+            <tag> Binary-Search </tag>
             
             <tag> Quora </tag>
             
@@ -82,9 +111,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Algorithms </tag>
-            
             <tag> Dynamic Programming </tag>
+            
+            <tag> Algorithms </tag>
             
         </tags>
       
@@ -111,9 +140,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Algorithms </tag>
-            
             <tag> Dynamic Programming </tag>
+            
+            <tag> Algorithms </tag>
             
             <tag> Amazon </tag>
             
