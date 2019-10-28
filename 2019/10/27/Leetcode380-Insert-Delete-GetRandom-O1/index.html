@@ -56,14 +56,14 @@
 </script>
 
   <meta name="description" content="题目描述Design a data structure that supports all following operations in average O(1) time. insert(val): Inserts an item val to the set if not already present.remove(val): Removes an item val from the se">
-<meta name="keywords" content="LeetCode,Design,Quora">
+<meta name="keywords" content="LeetCode,Quora,Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode380-Insert-Delete-GetRandom-O1">
 <meta property="og:url" content="http://earthaa.github.io/2019/10/27/Leetcode380-Insert-Delete-GetRandom-O1/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="题目描述Design a data structure that supports all following operations in average O(1) time. insert(val): Inserts an item val to the set if not already present.remove(val): Removes an item val from the se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-28T00:09:15.972Z">
+<meta property="og:updated_time" content="2019-10-28T00:11:52.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode380-Insert-Delete-GetRandom-O1">
 <meta name="twitter:description" content="题目描述Design a data structure that supports all following operations in average O(1) time. insert(val): Inserts an item val to the set if not already present.remove(val): Removes an item val from the se">
@@ -280,7 +280,7 @@
                 
               
 
-              <time title="Created: 2019-10-27 16:55:58 / Modified: 17:09:15" itemprop="dateCreated datePublished" datetime="2019-10-27T16:55:58-07:00">2019-10-27</time>
+              <time title="Created: 2019-10-27 16:55:58 / Modified: 17:11:52" itemprop="dateCreated datePublished" datetime="2019-10-27T16:55:58-07:00">2019-10-27</time>
             </span>
           
             
@@ -320,7 +320,7 @@
 <p>一个显然的思路是用HashMap存val与ArrayList里val的index的对应关系，获取随机数时再用ArrayList， 不过如果直接这样写会报错，因为每次删除数据时ArrayList的长度会改变，HashMap里存储的index就失去了效果，然而如果每次删除某个Index将后面的所有的index - 1，再在HashMap里都修改一遍，则时间复杂度就不再是O(1)了，那么有没有什么更好的办法。</p>
 <p>这里有一个比较Tricky的办法，也是我个人认为这道题的灵魂所在，因为这道题本质是一个Set，所以数字的顺序我们并不关心，我们就在删除时把所需要删除的元素与ArrayList里最后一个元素交换，然后每次默认只删除最后一个元素，这样其他index则不再改变，Map每次只修改原先的LastIndex所对应的val的index即可。</p>
 <p>Talk is Cheap， Show your the code:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span> </span>&#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; indexMap;</span><br><span class="line">    ArrayList&lt;Integer&gt; set;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        indexMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        set = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Inserts a value to the set. Returns true if the set did not already contain the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(indexMap.containsKey(val))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        indexMap.put(val, set.size());</span><br><span class="line">        set.add(val);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes a value from the set. Returns true if the set contained the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!indexMap.containsKey(val))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> index = indexMap.get(val);</span><br><span class="line">        <span class="comment">// 在ArrayList中，交换最后一个index</span></span><br><span class="line">        <span class="keyword">if</span>(index != set.size() - <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> lastNum = set.get(set.size() - <span class="number">1</span>);</span><br><span class="line">            set.set(index, lastNum);</span><br><span class="line">            indexMap.put(lastNum, index);</span><br><span class="line">        &#125;</span><br><span class="line">        indexMap.remove(val);</span><br><span class="line">        set.remove(set.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get a random element from the set. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> index = random.nextInt(set.size());</span><br><span class="line">        <span class="keyword">return</span> set.get(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>有一个follow up是如果允许multiple values怎么办，把map对应index从一对一改为一对多，即将HashMap<integer,integer>改为HashMap<integer, hashset<integer>&gt;即可</integer,></integer,integer></p>
+<p>有一个follow up是如果允许multiple values怎么办，把map对应index从一对一改为一对多，即将HashMap的key改成HashSet即可</p>
 
     </div>
 
@@ -338,9 +338,9 @@
             
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
             
-              <a href="/tags/Design/" rel="tag"># Design</a>
-            
               <a href="/tags/Quora/" rel="tag"># Quora</a>
+            
+              <a href="/tags/Design/" rel="tag"># Design</a>
             
           </div>
         
