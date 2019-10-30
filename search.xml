@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>二叉树中序搜索转双向链表——Bytedance的一条面试题</title>
+      <link href="/2019/10/29/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%BA%8F%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94Bytedance%E7%9A%84%E4%B8%80%E6%9D%A1%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <url>/2019/10/29/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%BA%8F%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94Bytedance%E7%9A%84%E4%B8%80%E6%9D%A1%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前出于无聊投了一次Bytedance的后端校招，刚刚收到一面，前面聊项目还是十分愉快的，到了算法部分，遇到了一个不是很常规的题目，很遗憾，当时并没有解出来，体现了我对于陌生题目的思考速度的欠缺，以及心态可能还是不够稳定，不过这也展现了宇宙条手撕代码的难度，居然会出LeetCode上没有的题(Leetcode114有一点相似，但并不完全一样)特此记录分享一下。</p><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>题目其实挺有意思，二叉树和双向链表很相像(说实话在此之前从来没有注意过这一点)，都是有两个指针指向两个不同的地方，要求将二叉树的中序遍历转换为双向链表，原地转换，不允许借助辅助空间。<br><a id="more"></a><br>我在geekforgeek上居然找到了这一题的图，大概是这个样子的</p><p><img src="https://www.geeksforgeeks.org/wp-content/uploads/tree-to-list.png"></p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>二叉树的题目，绝大多数情况下都是递归，不过怎么递归是关键，当时我纠结半天没有想出来的地方，在于我有点纠结递归返回什么，怎么返回，后来发现无所谓，直接返回自己就可以，写个makeList这种函数，将左右当做黑盒，直接返回本身节点，上一层节点要调用的时候，应该找左边的最后一个节点，以及右边的第一个节点，也就是说将寻找节点的任务交给上一层。</p><p>具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title">makeList</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    </span><br><span class="line">    TreeNode prev = makeList(root.left);</span><br><span class="line">    <span class="comment">//每次都默认左边右边都已经是一个构造好了的双向链表</span></span><br><span class="line">    <span class="comment">//左边就找最右的节点，建立与当前节点的联系</span></span><br><span class="line">    <span class="keyword">if</span>(prev != <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span>(prev.right != <span class="keyword">null</span>)</span><br><span class="line">            prev = prev.right;</span><br><span class="line">        prev.right = root;</span><br><span class="line">    &#125;</span><br><span class="line">    root.left = prev;</span><br><span class="line">    <span class="comment">//右边则找第一个节点</span></span><br><span class="line">    TreeNode next = makeList(root.right);</span><br><span class="line">    <span class="keyword">if</span>(next != <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span>(next.left != <span class="keyword">null</span>)</span><br><span class="line">            next = next.left;</span><br><span class="line">        next.left = root;</span><br><span class="line">    &#125;</span><br><span class="line">    root.right = next;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>虽然完了之后琢磨了下，很快解了出来，但是面试的时候没做出来，终归还是凉凉，面试的时候个人实力能发挥50%就算很好的了，深有体会，只能不断提高个人实力和做题的熟练度了，关键是思路与方法，例如这题是一个很明显的递归，弄清递归条件，把递归其实可以就当做一个黑盒使用，这类问题自然也迎刃而解了，现场没想出来这种不是很难的题目，归根结底，还是因为菜，菜有时不光是技术能力，也包括临场应变和心态，多多努力吧，唉~~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面经 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bytedance </tag>
+            
+            <tag> Tree </tag>
+            
+            <tag> LinkedList </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode525 Contiguous Array</title>
       <link href="/2019/10/28/Leetcode525-Contiguous-Array/"/>
       <url>/2019/10/28/Leetcode525-Contiguous-Array/</url>
