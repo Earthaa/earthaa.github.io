@@ -55,23 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目描述A peak element is an element that is greater than its neighbors. Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array may contain multiple peak">
-<meta name="keywords" content="LeetCode,Binary-Search,Algorithms,Quora">
+  <meta name="description" content="介绍计算机历史上有一个非常经典的问题叫做Maximum-Subarray-Problem， 求数组的最大子序列，要求该子序列和为最大值，子序列应当连续。 比如 [−2, 1, −3, 4, −1, 2, 1, −5, 4]， 最大应该子序列为 [4, −1, 2, 1]。 暴力的解法是算出所有的子序列，然后求和，该方法的时间复杂度为O(n^2). Kadane’s AlgorithmKadane’">
+<meta name="keywords" content="LeetCode,Algorithms,Dynamic Programming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode162 Find Peak Element">
-<meta property="og:url" content="http://earthaa.github.io/2019/10/27/LeetCode162-Find-Peak-Element/index.html">
+<meta property="og:title" content="Kadane‘s Algorithm">
+<meta property="og:url" content="http://earthaa.github.io/2019/11/12/Kadane-Algorithm/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="题目描述A peak element is an element that is greater than its neighbors. Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array may contain multiple peak">
+<meta property="og:description" content="介绍计算机历史上有一个非常经典的问题叫做Maximum-Subarray-Problem， 求数组的最大子序列，要求该子序列和为最大值，子序列应当连续。 比如 [−2, 1, −3, 4, −1, 2, 1, −5, 4]， 最大应该子序列为 [4, −1, 2, 1]。 暴力的解法是算出所有的子序列，然后求和，该方法的时间复杂度为O(n^2). Kadane’s AlgorithmKadane’">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case1.PNG">
-<meta property="og:image" content="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case2.PNG">
-<meta property="og:image" content="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case3.PNG">
-<meta property="og:updated_time" content="2019-10-27T22:51:17.672Z">
+<meta property="og:updated_time" content="2019-11-13T01:25:53.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode162 Find Peak Element">
-<meta name="twitter:description" content="题目描述A peak element is an element that is greater than its neighbors. Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array may contain multiple peak">
-<meta name="twitter:image" content="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case1.PNG">
-  <link rel="canonical" href="http://earthaa.github.io/2019/10/27/LeetCode162-Find-Peak-Element/">
+<meta name="twitter:title" content="Kadane‘s Algorithm">
+<meta name="twitter:description" content="介绍计算机历史上有一个非常经典的问题叫做Maximum-Subarray-Problem， 求数组的最大子序列，要求该子序列和为最大值，子序列应当连续。 比如 [−2, 1, −3, 4, −1, 2, 1, −5, 4]， 最大应该子序列为 [4, −1, 2, 1]。 暴力的解法是算出所有的子序列，然后求和，该方法的时间复杂度为O(n^2). Kadane’s AlgorithmKadane’">
+  <link rel="canonical" href="http://earthaa.github.io/2019/11/12/Kadane-Algorithm/">
 
 
 <script id="page-configurations">
@@ -85,7 +81,7 @@
   };
 </script>
 
-  <title>LeetCode162 Find Peak Element | Yi's Blog</title>
+  <title>Kadane‘s Algorithm | Yi's Blog</title>
   
 
 
@@ -256,7 +252,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/27/LeetCode162-Find-Peak-Element/">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/11/12/Kadane-Algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -268,7 +264,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">LeetCode162 Find Peak Element
+        <h1 class="post-title" itemprop="name headline">Kadane‘s Algorithm
 
           
         </h1>
@@ -284,25 +280,12 @@
                 
               
 
-              <time title="Created: 2019-10-27 15:32:18 / Modified: 15:51:17" itemprop="dateCreated datePublished" datetime="2019-10-27T15:32:18-07:00">2019-10-27</time>
+              <time title="Created: 2019-11-12 17:09:21 / Modified: 17:25:53" itemprop="dateCreated datePublished" datetime="2019-11-12T17:09:21-08:00">2019-11-12</time>
             </span>
           
             
 
             
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -316,21 +299,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A peak element is an element that is greater than its neighbors.</p>
-<p>Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.</p>
-<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
-<p>You may imagine that nums[-1] = nums[n] = -∞.<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 3 is a peak element and your function should return the index number 2.</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,1,3,5,6,4]</span><br><span class="line">Output: 1 or 5 </span><br><span class="line">Explanation: Your function can return either index number 1 where the peak element is 2, </span><br><span class="line">             or index number 5 where the peak element is 6.</span><br></pre></td></tr></table></figure>
-<p>Your solution should be in <strong>logarithmic</strong> complexity.</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>题意十分简短，也很好理解，就是一个数组，找出比左右大的那个数的index，其中最左边和最右边默认都是-∞，一个很直观的思路就扫描一遍，挨个比较左右，时间复杂度为O（n）, 但是题目后面还有一个要求，时间复杂度要为O(logn)。</p>
-<p>显然遇到数组这类题目，O(logn)一个很直观的思路就是二分，不过二分是基于排序好的数组，那这个题目如何二分呢？</p>
-<p>其实注意到num[i] 与 num[i+1]的关系是解决本题的关键，引用下Leetcode解题区的图，这个问题可以分为下面三种情况讨论:</p>
-<p><img alt src="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case1.PNG"></p>
-<p><img alt src="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case2.PNG"></p>
-<p><img alt src="https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case3.PNG"></p>
-<p>我们发现peak是一个分界点，在这个分界点左边为上升区间，在这个分界点右边为下降区间，这样二分的思路就变得清晰了起来:</p>
-<p>每次二分取mid，如果我们发现nums[mid] &gt; nums[mid+1]，说明这个mid位于一个下降的区间，peak应该出现在mid左边，则搜算范围应该是[left, mid]<br>如果nums[mid] &lt; nums[mid+1]，则说明mid是在一个上升的区间上，搜索范围则应该是[mid+1, right]<br>注意到题目中说明元素各不相同，我们不需要考虑相等的情况<br>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &gt; nums[mid + <span class="number">1</span>])</span><br><span class="line">            right = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这是一道挺经典的二分变种，考察对二分搜索的认识和灵活使用，问题关键在于发现peak是上升区间和下降区间的分界点利用这个性质来进行二分搜索，挺适合作为面试题来出的，如果我是考官的话:)</p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>计算机历史上有一个非常经典的问题叫做Maximum-Subarray-Problem， 求数组的最大子序列，要求该子序列和为最大值，子序列应当连续。</p>
+<p>比如 [−2, 1, −3, 4, −1, 2, 1, −5, 4]， 最大应该子序列为 [4, −1, 2, 1]。</p>
+<p>暴力的解法是算出所有的子序列，然后求和，该方法的时间复杂度为O(n^2).</p>
+<h2 id="Kadane’s-Algorithm"><a href="#Kadane’s-Algorithm" class="headerlink" title="Kadane’s Algorithm"></a>Kadane’s Algorithm</h2><p>Kadane’s Algorithm是求解该类问题的一个通法，原理是利用Dynamic Programming保存所有以i结尾的子序列的最大长度，dp公式为:</p>
+<script type="math/tex; mode=display">dp[i] = Math.max(dp[i - 1], 0) + nums[i]</script><a id="more"></a>
+<p>如果以i - 1为结尾的子序列最大值为负，那么不管怎么样，dp[i]就应该从头开始计数，因为前面的子序列已经不再有影响了(dp[i - 1] + nums[i]必然小于nums[i])</p>
+<p>Leetcode里有两道经典的题目，用到了这个算法，分别为Leetcode53和Leetcode1186，Leetcode 53是这一算法的直接运用，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> res = dp[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        dp[i] = Math.max(dp[i - <span class="number">1</span>], <span class="number">0</span>) + nums[i];</span><br><span class="line">        res = Math.max(dp[i], res);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Leetcode1186是一个变式，基本思路不变，不过我们可以选择是否删除删除一个元素，显然，如果遇到负数，我们可以考虑将其删除，然后计算两头，对于第i个数字，如果它是负数，则计算以i - 1为结尾的最大子序列和以i + 1为开头的最大子序列，我们分别用dp1，dp2存储这两种状态，原理依旧是Kadane’s Algorithm</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximumSum</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp1 = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    <span class="keyword">int</span>[] dp2 = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    dp1[<span class="number">0</span>] = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> res = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">        dp1[i] = Math.max(dp1[i - <span class="number">1</span>], <span class="number">0</span>) + arr[i];</span><br><span class="line">        res = Math.max(res,dp1[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    dp2[arr.length - <span class="number">1</span>] = arr[arr.length - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = arr.length - <span class="number">2</span>; i &gt; -<span class="number">1</span>; --i)&#123;</span><br><span class="line">        dp2[i] = Math.max(dp2[i + <span class="number">1</span>], <span class="number">0</span>) + arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; arr.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] &lt; <span class="number">0</span>)</span><br><span class="line">            res = Math.max(dp1[i - <span class="number">1</span>] + dp2[i + <span class="number">1</span>], res);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -348,11 +325,9 @@
             
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
             
-              <a href="/tags/Binary-Search/" rel="tag"># Binary-Search</a>
-            
               <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
             
-              <a href="/tags/Quora/" rel="tag"># Quora</a>
+              <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
             
           </div>
         
@@ -362,8 +337,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/22/LeetCode-221-Maximal-Square/" rel="next" title="LeetCode-221-Maximal-Square">
-                  <i class="fa fa-chevron-left"></i> LeetCode-221-Maximal-Square
+                <a href="/2019/11/04/Leetcode348-Design-Tic-Tac-Toe/" rel="next" title="LeetCode348 Design Tic Tac Toe">
+                  <i class="fa fa-chevron-left"></i> LeetCode348 Design Tic Tac Toe
                 </a>
               
             </div>
@@ -371,10 +346,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/27/Leetcode380-Insert-Delete-GetRandom-O1/" rel="prev" title="Leetcode380 Insert Delete GetRandom O(1)">
-                  Leetcode380 Insert Delete GetRandom O(1) <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -423,7 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kadane’s-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">Kadane’s Algorithm</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -588,7 +559,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -605,6 +576,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
   
 
   
