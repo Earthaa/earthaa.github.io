@@ -55,22 +55,22 @@
   };
 </script>
 
-  <meta name="description" content="题目描述There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any">
-<meta name="keywords" content="LeetCode,Algorithms,Amazon,Graph">
+  <meta name="description" content="题目描述Given a binary tree, we install cameras on the nodes of the tree.  Each camera at a node can monitor its parent, itself, and its immediate children. Calculate the minimum number of cameras needed">
+<meta name="keywords" content="LeetCode,Greedy,DFS,Tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode1192 Critical Coneections in a Network">
-<meta property="og:url" content="http://earthaa.github.io/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/index.html">
+<meta property="og:title" content="Leetcode968 Binary Tree Cameras">
+<meta property="og:url" content="http://earthaa.github.io/2019/11/13/Leetcode968-Binary-Tree-Cameras/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="题目描述There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any">
+<meta property="og:description" content="题目描述Given a binary tree, we install cameras on the nodes of the tree.  Each camera at a node can monitor its parent, itself, and its immediate children. Calculate the minimum number of cameras needed">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png">
-<meta property="og:image" content="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Bridge2-300x176.png">
-<meta property="og:updated_time" content="2019-10-22T02:40:05.151Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_02.png">
+<meta property="og:updated_time" content="2019-11-13T22:37:21.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode1192 Critical Coneections in a Network">
-<meta name="twitter:description" content="题目描述There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any">
-<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png">
-  <link rel="canonical" href="http://earthaa.github.io/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/">
+<meta name="twitter:title" content="Leetcode968 Binary Tree Cameras">
+<meta name="twitter:description" content="题目描述Given a binary tree, we install cameras on the nodes of the tree.  Each camera at a node can monitor its parent, itself, and its immediate children. Calculate the minimum number of cameras needed">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png">
+  <link rel="canonical" href="http://earthaa.github.io/2019/11/13/Leetcode968-Binary-Tree-Cameras/">
 
 
 <script id="page-configurations">
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title>Leetcode1192 Critical Coneections in a Network | Yi's Blog</title>
+  <title>Leetcode968 Binary Tree Cameras | Yi's Blog</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/11/13/Leetcode968-Binary-Tree-Cameras/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -267,7 +267,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode1192 Critical Coneections in a Network
+        <h1 class="post-title" itemprop="name headline">Leetcode968 Binary Tree Cameras
 
           
         </h1>
@@ -283,7 +283,7 @@
                 
               
 
-              <time title="Created: 2019-10-21 13:28:15 / Modified: 19:40:05" itemprop="dateCreated datePublished" datetime="2019-10-21T13:28:15-07:00">2019-10-21</time>
+              <time title="Created: 2019-11-13 14:22:02 / Modified: 14:37:21" itemprop="dateCreated datePublished" datetime="2019-11-13T14:22:02-08:00">2019-11-13</time>
             </span>
           
             
@@ -315,16 +315,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any server can reach any other server directly or indirectly through the network.</p>
-<p>A critical connection is a connection that, if removed, will make some server unable to reach some other server.</p>
-<p>Return all critical connections in the network in any order.<br><a id="more"></a><br><img alt src="https://assets.leetcode.com/uploads/2019/09/03/1537_ex1_2.png" style="width: 198px; height: 248px;"><br><img alt src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Bridge2-300x176.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = 4, connections = [[0,1],[1,2],[2,0],[1,3]]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output: [[1,3]]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Explanation:</span><br><span class="line">[[3,1]] is also accepted.</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是Amazon OA上的一道题，可以利用Trajan算法解决，说实话，这种考法比较无聊，如果你熟悉Tarjan就能轻松秒杀，反之死活想不出来，没有什么区分度，不过既然亚麻考了这题，还是有必要熟悉下的，我OA没有碰到，但有准备过。</p>
-<p>这道题目的关键是理解Bridge的含义，即连通两个连通分量的桥，根据观察我们可以发现这个Critical Connection或者说Bridge不应该出现在一个环里，Tarjan算法的核心在于，找到环，它采用了一种比较巧妙的思路，即记录每个节点第一次发现的位置，如果没有环，显然这个位置是不断增大的，如果发现某个节点可以通往比它位置小的节点则说明出现了环。</p>
-<p>理解了这个思路，用DFS搜索图，保存第一次出现的位置和所能到达的最小位置，如果前者小于后者，则说明没有环，则这条路径是Bridge也就是Critical Connection</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; criticalConnections(<span class="keyword">int</span> n, List&lt;List&lt;Integer&gt;&gt; connections) &#123;</span><br><span class="line">	<span class="keyword">int</span>[] disc = <span class="keyword">new</span> <span class="keyword">int</span>[n], low = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">	<span class="comment">// use adjacency list instead of matrix will save some memory, adjmatrix will cause MLE</span></span><br><span class="line">	List&lt;Integer&gt;[] graph = <span class="keyword">new</span> ArrayList[n];</span><br><span class="line">	List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	Arrays.fill(disc, -<span class="number">1</span>); <span class="comment">// use disc to track if visited (disc[i] == -1)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		graph[i] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// build graph</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; connections.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> from = connections.get(i).get(<span class="number">0</span>), to = connections.get(i).get(<span class="number">1</span>);</span><br><span class="line">		graph[from].add(to);</span><br><span class="line">		graph[to].add(from);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (disc[i] == -<span class="number">1</span>) &#123;</span><br><span class="line">			dfs(i, low, disc, graph, res, i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> time = <span class="number">0</span>; <span class="comment">// time when discover each vertex</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span>[] low, <span class="keyword">int</span>[] disc, List&lt;Integer&gt;[] graph, List&lt;List&lt;Integer&gt;&gt; res, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">	disc[u] = low[u] = ++time; <span class="comment">// discover u</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; graph[u].size(); j++) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = graph[u].get(j);</span><br><span class="line">		<span class="keyword">if</span> (v == pre) &#123;</span><br><span class="line">			<span class="keyword">continue</span>; <span class="comment">// if parent vertex, ignore</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (disc[v] == -<span class="number">1</span>) &#123; <span class="comment">// if not discovered</span></span><br><span class="line">			dfs(v, low, disc, graph, res, u);</span><br><span class="line">			low[u] = Math.min(low[u], low[v]);</span><br><span class="line">			<span class="keyword">if</span> (low[v] &gt; disc[u]) &#123;</span><br><span class="line">				<span class="comment">// u - v is critical, there is no path for v to reach back to u or previous vertices of u</span></span><br><span class="line">				res.add(Arrays.asList(u, v));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123; <span class="comment">// if v discovered and is not parent of u, update low[u], cannot use low[v] because u is not subtree of v</span></span><br><span class="line">			low[u] = Math.min(low[u], disc[v]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a binary tree, we install cameras on the nodes of the tree. </p>
+<p>Each camera at a node can monitor its parent, itself, and its immediate children.</p>
+<p>Calculate the minimum number of cameras needed to monitor all nodes of the tree.</p>
+<a id="more"></a>
+<p>Eample 1:</p>
+<p><img alt src="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,0,null,0,0]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: One camera is enough to monitor all nodes if placed as shown.</span><br></pre></td></tr></table></figure>
+<p><img alt src="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_02.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,0,null,0,null,0,null,null,0]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: At least two cameras are needed to monitor all nodes of the tree. The above image shows one of the valid configurations of camera placement.</span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这道题大概是说每个节点放一个相机，可以monitor父节点，自己以及直接的后继节点，要求求出最小放置的相机数量，使得整个二叉树都能被monitor到。</p>
+<p>我们可以列举出每个被monitor节点有四种可能性，左子节点有相机，右子节点有相机，自己有相机或者父节点有相机。然后buttom up， 对于Leaf节点，如果在leaf放一个相机，自己和父节点可以cover，如果父节点放一个相机，父节点，两个子节点和父节点的父节点（parent’s parent）都能cover，也就是说对于所有leaf节点而言，在其父节点放一个相机，永远优于在leaf节点放相机。</p>
+<p>有了这样一个推理，则可以利用Greedy的思路解决这个问题<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCameraCover</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> preOrder(root) == <span class="number">0</span> ? <span class="number">1</span> + res : res; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">preOrder</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> left = preOrder(root.left);</span><br><span class="line">    <span class="keyword">int</span> right = preOrder(root.right);</span><br><span class="line">    <span class="comment">//两个子节点有一个没有被cover，则在该节点放一个相机</span></span><br><span class="line">    <span class="keyword">if</span>(left == <span class="number">0</span> || right == <span class="number">0</span>)&#123;</span><br><span class="line">        ++res;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果两个节点都被cover了且有一个上面有相机，则该节点被cover并且无需放相机</span></span><br><span class="line">    <span class="comment">// 如果两个节点都被cover但都没有相机，则该节点没有被cover，需要其父节点放一个相机</span></span><br><span class="line">    <span class="keyword">return</span> (left == <span class="number">1</span> || right == <span class="number">1</span>) ? <span class="number">2</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>每个节点用0，1，2表示三种不同的状态:</p>
+<ul>
+<li>0表示这个节点没有被cover</li>
+<li>1表示这个节点上有一个相机</li>
+<li>2表示这个节点被cover了但没有相机</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一道很不错的Greedy算法题，评论区有一个很好的类比可以帮助我们理解这个算法背后的含义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2---孤儿，不需要父母照顾</span><br><span class="line">1---爸爸，可以照顾儿子和父母</span><br><span class="line">0---啃老族：爸爸带带我。</span><br><span class="line"></span><br><span class="line">两个后继都是孤儿时（2），不需要干任何事，可以化身啃老族（0）。</span><br><span class="line">当你的后继里面有啃老族（0），你就必须成为爸爸（1）-----camera+1</span><br><span class="line">当你的后继里面有爸爸（1）时，你又变成里不需要任何照顾的孤儿（2）</span><br></pre></td></tr></table></figure>
+<p>核心还是在于发现在父节点放相机永远优于在leaf节点放相机</p>
 
     </div>
 
@@ -342,11 +353,11 @@
             
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
             
-              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+              <a href="/tags/Greedy/" rel="tag"># Greedy</a>
             
-              <a href="/tags/Amazon/" rel="tag"># Amazon</a>
+              <a href="/tags/DFS/" rel="tag"># DFS</a>
             
-              <a href="/tags/Graph/" rel="tag"># Graph</a>
+              <a href="/tags/Tree/" rel="tag"># Tree</a>
             
           </div>
         
@@ -356,8 +367,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/21/hexo配置/" rel="next" title="hexo配置">
-                  <i class="fa fa-chevron-left"></i> hexo配置
+                <a href="/2019/11/12/Leetcode330-Patching-Array/" rel="next" title="Leetcode330 Patching Array">
+                  <i class="fa fa-chevron-left"></i> Leetcode330 Patching Array
                 </a>
               
             </div>
@@ -365,10 +376,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/21/Leetcode1230-Toss-Strange-Coins/" rel="prev" title="Leetcode1230 Toss Strange Coins">
-                  Leetcode1230 Toss Strange Coins <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -417,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

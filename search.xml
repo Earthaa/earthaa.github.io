@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Leetcode968 Binary Tree Cameras</title>
+      <link href="/2019/11/13/Leetcode968-Binary-Tree-Cameras/"/>
+      <url>/2019/11/13/Leetcode968-Binary-Tree-Cameras/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a binary tree, we install cameras on the nodes of the tree. </p><p>Each camera at a node can monitor its parent, itself, and its immediate children.</p><p>Calculate the minimum number of cameras needed to monitor all nodes of the tree.</p><a id="more"></a><p>Eample 1:</p><p><img alt src="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,0,null,0,0]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: One camera is enough to monitor all nodes if placed as shown.</span><br></pre></td></tr></table></figure><p><img alt src="https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_02.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,0,null,0,null,0,null,null,0]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: At least two cameras are needed to monitor all nodes of the tree. The above image shows one of the valid configurations of camera placement.</span><br></pre></td></tr></table></figure><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这道题大概是说每个节点放一个相机，可以monitor父节点，自己以及直接的后继节点，要求求出最小放置的相机数量，使得整个二叉树都能被monitor到。</p><p>我们可以列举出每个被monitor节点有四种可能性，左子节点有相机，右子节点有相机，自己有相机或者父节点有相机。然后buttom up， 对于Leaf节点，如果在leaf放一个相机，自己和父节点可以cover，如果父节点放一个相机，父节点，两个子节点和父节点的父节点（parent’s parent）都能cover，也就是说对于所有leaf节点而言，在其父节点放一个相机，永远优于在leaf节点放相机。</p><p>有了这样一个推理，则可以利用Greedy的思路解决这个问题<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCameraCover</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> preOrder(root) == <span class="number">0</span> ? <span class="number">1</span> + res : res; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">preOrder</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> left = preOrder(root.left);</span><br><span class="line">    <span class="keyword">int</span> right = preOrder(root.right);</span><br><span class="line">    <span class="comment">//两个子节点有一个没有被cover，则在该节点放一个相机</span></span><br><span class="line">    <span class="keyword">if</span>(left == <span class="number">0</span> || right == <span class="number">0</span>)&#123;</span><br><span class="line">        ++res;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果两个节点都被cover了且有一个上面有相机，则该节点被cover并且无需放相机</span></span><br><span class="line">    <span class="comment">// 如果两个节点都被cover但都没有相机，则该节点没有被cover，需要其父节点放一个相机</span></span><br><span class="line">    <span class="keyword">return</span> (left == <span class="number">1</span> || right == <span class="number">1</span>) ? <span class="number">2</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>每个节点用0，1，2表示三种不同的状态:</p><ul><li>0表示这个节点没有被cover</li><li>1表示这个节点上有一个相机</li><li>2表示这个节点被cover了但没有相机</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一道很不错的Greedy算法题，评论区有一个很好的类比可以帮助我们理解这个算法背后的含义:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2---孤儿，不需要父母照顾</span><br><span class="line">1---爸爸，可以照顾儿子和父母</span><br><span class="line">0---啃老族：爸爸带带我。</span><br><span class="line"></span><br><span class="line">两个后继都是孤儿时（2），不需要干任何事，可以化身啃老族（0）。</span><br><span class="line">当你的后继里面有啃老族（0），你就必须成为爸爸（1）-----camera+1</span><br><span class="line">当你的后继里面有爸爸（1）时，你又变成里不需要任何照顾的孤儿（2）</span><br></pre></td></tr></table></figure><p>核心还是在于发现在父节点放相机永远优于在leaf节点放相机</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> Greedy </tag>
+            
+            <tag> DFS </tag>
+            
+            <tag> Tree </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode330 Patching Array</title>
       <link href="/2019/11/12/Leetcode330-Patching-Array/"/>
       <url>/2019/11/12/Leetcode330-Patching-Array/</url>
@@ -45,9 +76,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Algorithms </tag>
-            
             <tag> Dynamic Programming </tag>
+            
+            <tag> Algorithms </tag>
             
         </tags>
       
@@ -157,9 +188,9 @@
             
             <tag> LinkedList </tag>
             
-            <tag> Bytedance </tag>
-            
             <tag> Tree </tag>
+            
+            <tag> Bytedance </tag>
             
         </tags>
       
@@ -275,9 +306,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Algorithms </tag>
-            
             <tag> Dynamic Programming </tag>
+            
+            <tag> Algorithms </tag>
             
         </tags>
       
@@ -304,9 +335,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Algorithms </tag>
-            
             <tag> Dynamic Programming </tag>
+            
+            <tag> Algorithms </tag>
             
             <tag> Amazon </tag>
             
