@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="题目描述Given a sorted positive integer array nums and an integer n, add/patch elements to the array such that any number in range [1, n] inclusive can be formed by the sum of some elements in the array.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-13T07:37:28.003Z">
+<meta property="og:updated_time" content="2019-11-13T23:42:15.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode330 Patching Array">
 <meta name="twitter:description" content="题目描述Given a sorted positive integer array nums and an integer n, add/patch elements to the array such that any number in range [1, n] inclusive can be formed by the sum of some elements in the array.">
@@ -280,11 +280,19 @@
                 
               
 
-              <time title="Created: 2019-11-12 23:20:20 / Modified: 23:37:28" itemprop="dateCreated datePublished" datetime="2019-11-12T23:20:20-08:00">2019-11-12</time>
+              <time title="Created: 2019-11-12 23:20:20" itemprop="dateCreated datePublished" datetime="2019-11-12T23:20:20-08:00">2019-11-12</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-13 15:42:15" itemprop="dateModified" datetime="2019-11-13T15:42:15-08:00">2019-11-13</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -317,7 +325,7 @@
 <p>Example 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,2], n = 5</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure></p>
 <h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>这道题目意思很简单，一个排序好了的数列，选择其中任意的几个相加，要求结果覆盖1 - n，如果不能覆盖，则可以添加patch，求最小patch数。</p>
 <p>首先说明下，这道题我并没有做出来，这是我见过的最优雅的贪心算法之一，可以用非常简洁的代码完成任务。</p>
-<p>首先，假设有一个数miss了，那说明1 - (miss - 1)已经被覆盖了，而为了覆盖miss，找一个数x，这个x必然小于等于miss，因为大于的话miss依旧不会被覆盖，举几个数就能理解了，这个x就是题目中的patch，也就是补丁，添加了x后覆盖范围就变成了1 - （miss + x - 1)了，我们为了让patch数最小，就得每次在范围拓展的时候将上限，也就是(miss + x - 1)尽可能的大，之前在对于x的讨论中，可以发现要x的可能取值范围在[1, miss]之间，取最大值即可，也就是说每次添加的patch正好为miss值，有了这样一个概念，题目也就迎刃而解了。</p>
+<p>首先，假设有一个数miss了，那说明[1, miss - 1]已经被覆盖了，而为了覆盖miss，找一个数x，这个x必然小于等于miss，因为大于的话miss依旧不会被覆盖，举几个数就能理解了，这个x就是题目中的patch，也就是补丁，添加了x后覆盖范围就变成了[1, miss + x - 1]了，我们为了让patch数最小，就得每次在范围拓展的时候将上限，也就是(miss + x - 1)尽可能的大，之前在对于x的讨论中，可以发现要x的可能取值范围在[1, miss]之间，取最大值即可，也就是说每次添加的patch正好为miss值，有了这样一个概念，题目也就迎刃而解了。</p>
 <p>算法描述:</p>
 <ul>
 <li>Initialize the range [1, miss) = [1, 1) = empty<br>While n is not covered yet</li>
@@ -444,7 +452,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -470,7 +478,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>

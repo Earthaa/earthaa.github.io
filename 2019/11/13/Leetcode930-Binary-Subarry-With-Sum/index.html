@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
-<meta name="keywords" content="LeetCode,Algorithms,Dynamic Programming,Amazon">
+  <meta name="description" content="题目描述In an array A of 0s and 1s, how many non-empty subarrays have sum S? Example 1: 12345678Input: A = [1,0,1,0,1], S = 2Output: 4Explanation: The 4 subarrays are bolded below:[1,0,1,0,1][1,0,1,0,1][1">
+<meta name="keywords" content="Leetcode,Array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode1230 Toss Strange Coins">
-<meta property="og:url" content="http://earthaa.github.io/2019/10/21/Leetcode1230-Toss-Strange-Coins/index.html">
+<meta property="og:title" content="Leetcode930 Binary Subarry With Sum">
+<meta property="og:url" content="http://earthaa.github.io/2019/11/13/Leetcode930-Binary-Subarry-With-Sum/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
+<meta property="og:description" content="题目描述In an array A of 0s and 1s, how many non-empty subarrays have sum S? Example 1: 12345678Input: A = [1,0,1,0,1], S = 2Output: 4Explanation: The 4 subarrays are bolded below:[1,0,1,0,1][1,0,1,0,1][1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-23T00:57:12.301Z">
+<meta property="og:updated_time" content="2019-11-13T23:43:22.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode1230 Toss Strange Coins">
-<meta name="twitter:description" content="题目描述You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed. Return the probability that the number of coins facing heads equals target if you toss every coin exactly">
-  <link rel="canonical" href="http://earthaa.github.io/2019/10/21/Leetcode1230-Toss-Strange-Coins/">
+<meta name="twitter:title" content="Leetcode930 Binary Subarry With Sum">
+<meta name="twitter:description" content="题目描述In an array A of 0s and 1s, how many non-empty subarrays have sum S? Example 1: 12345678Input: A = [1,0,1,0,1], S = 2Output: 4Explanation: The 4 subarrays are bolded below:[1,0,1,0,1][1,0,1,0,1][1">
+  <link rel="canonical" href="http://earthaa.github.io/2019/11/13/Leetcode930-Binary-Subarry-With-Sum/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>Leetcode1230 Toss Strange Coins | Yi's Blog</title>
+  <title>Leetcode930 Binary Subarry With Sum | Yi's Blog</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/21/Leetcode1230-Toss-Strange-Coins/">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/11/13/Leetcode930-Binary-Subarry-With-Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -264,7 +264,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode1230 Toss Strange Coins
+        <h1 class="post-title" itemprop="name headline">Leetcode930 Binary Subarry With Sum
 
           
         </h1>
@@ -280,19 +280,11 @@
                 
               
 
-              <time title="Created: 2019-10-21 19:18:42" itemprop="dateCreated datePublished" datetime="2019-10-21T19:18:42-07:00">2019-10-21</time>
+              <time title="Created: 2019-11-13 15:31:58 / Modified: 15:43:22" itemprop="dateCreated datePublished" datetime="2019-11-13T15:31:58-08:00">2019-11-13</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-22 17:57:12" itemprop="dateModified" datetime="2019-10-22T17:57:12-07:00">2019-10-22</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -301,7 +293,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
 
                 
                 
@@ -320,17 +312,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>You have some coins.  The i-th coin has a probability prob[i] of facing heads when tossed.</p>
-<p>Return the probability that the number of coins facing heads equals target if you toss every coin exactly once.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example1:</span><br><span class="line">Input: prob = [0.4], target = 1</span><br><span class="line">Output: 0.40000</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example2:</span><br><span class="line">Input: prob = [0.5,0.5,0.5,0.5,0.5], target = 0</span><br><span class="line">Output: 0.03125</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Explanation:</span><br><span class="line">[[3,1]] is also accepted.</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Constraints:</span><br><span class="line">1 &lt;= prob.length &lt;= 1000</span><br><span class="line">0 &lt;= prob[i] &lt;= 1</span><br><span class="line">0 &lt;= target &lt;= prob.length</span><br><span class="line">Answers will be accepted as correct if they are within 10^-5 of the correct answer.</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><a id="more"></a>
-<p>题目是这样的，有一堆不均匀的硬币，问你正好target朝上的概率是多少？</p>
-<p>这是一道典型的动态规划问题，多举出一些样例，或者根据基础的概率论，我们可以发现每个硬币都有正反两种可能性，而到第i个硬币正好有j个朝上的概率跟此前的状态有关，我们用dp[i][j]来表示，显然第i个硬币可以朝上或者朝下，如果朝上则前面得有j - 1个硬币朝上，才能保证此时有共有j个朝上，如果此前已经有j个朝上，则第i个必须朝下，于是我们很容易得到递推式:</p>
-<script type="math/tex; mode=display">dp(i, j) = dp(i - 1, j) * (1 - p(i)) + dp(i - 1, j - 1) * p(i)</script><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">probabilityOfHeads</span><span class="params">(<span class="keyword">double</span>[] prob, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span>[][] dp = <span class="keyword">new</span> <span class="keyword">double</span>[prob.length][target + <span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span> - prob[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span>(target &gt;= <span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">1</span>] = prob[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prob.length; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= Math.min(i + <span class="number">1</span>, target); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j == <span class="number">0</span>)</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] * (<span class="number">1.0</span> - prob[i]);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] * (<span class="number">1.0</span> - prob[i]) + dp[i - <span class="number">1</span>][j - <span class="number">1</span>] * prob[i];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[prob.length - <span class="number">1</span>][target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不过这道题，还可以再做空间上的优化，我们发现求dp[i][j]只跟dp[i - 1][j - 1]与dp[i][j - 1]有关，遇到这种情况，我们可以把i利用循环优化掉，只保留j，即dp[j]表示此时有j个朝上的硬币的概率，于是我们可以得到更加简化的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">probabilityOfHeads</span><span class="params">(<span class="keyword">double</span>[] prob, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span>[] dp = <span class="keyword">new</span> <span class="keyword">double</span>[target + <span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prob.length; ++i)</span><br><span class="line">    <span class="comment">//这边很容易出错，我们需要倒序遍历，否则之前的值(dp[j - 1])已经被修改</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = Math.min(i + <span class="number">1</span>, target); j &gt;= <span class="number">0</span>; --k)</span><br><span class="line">            dp[j] = (j &gt; <span class="number">0</span> ? dp[j - <span class="number">1</span>] : <span class="number">0</span>) * prob[i] + dp[j] * (<span class="number">1</span> - prob[i]);</span><br><span class="line">    <span class="keyword">return</span> dp[target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In an array A of 0s and 1s, how many non-empty subarrays have sum S?</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,0,1,0,1], S = 2</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: </span><br><span class="line">The 4 subarrays are bolded below:</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li>A.length &lt;= 30000</li>
+<li>0 &lt;= S &lt;= A.length</li>
+<li>A[i] is either 0 or 1</li>
+</ul>
+<a id="more"></a>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>题目是在一个由0、1组成的序列中，找到和为S的subarray的个数。</p>
+<p>所有subarray的题目都可以考虑用prefix sum进行优化，即sum(i ,j) = prefix(j) - prefix(i)对于本题而言，可以利用HashMap存储prefix为特定sum的序列个数，每次有X新的元素加入的时候，更新即可，代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSubarraysWithSum</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> S)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++)&#123;</span><br><span class="line">        sum += A[i];</span><br><span class="line">        <span class="keyword">int</span> target = sum - S;</span><br><span class="line">        <span class="comment">//检查prefix和为target的序列有多少个</span></span><br><span class="line">        res += map.getOrDefault(target, <span class="number">0</span>);</span><br><span class="line">        map.put(sum, map.getOrDefault(sum ,<span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -346,13 +340,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
             
-              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
-            
-              <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
-            
-              <a href="/tags/Amazon/" rel="tag"># Amazon</a>
+              <a href="/tags/Array/" rel="tag"># Array</a>
             
           </div>
         
@@ -362,8 +352,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/" rel="next" title="Leetcode1192 Critical Coneections in a Network">
-                  <i class="fa fa-chevron-left"></i> Leetcode1192 Critical Coneections in a Network
+                <a href="/2019/11/13/Leetcode968-Binary-Tree-Cameras/" rel="next" title="Leetcode968 Binary Tree Cameras">
+                  <i class="fa fa-chevron-left"></i> Leetcode968 Binary Tree Cameras
                 </a>
               
             </div>
@@ -371,10 +361,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/22/LeetCode-221-Maximal-Square/" rel="prev" title="LeetCode-221-Maximal-Square">
-                  LeetCode-221-Maximal-Square <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -588,7 +574,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -605,56 +591,6 @@
 
   
 
-  
-    
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
-    
   
 
   
