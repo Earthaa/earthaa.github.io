@@ -112,9 +112,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
@@ -245,6 +245,112 @@
           <div id="content" class="content">
             
   <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/11/13/Boyer-Moore-Vote-Algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yi Zhou">
+      <meta itemprop="description" content="姑妄言之姑听之">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yi's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/11/13/Boyer-Moore-Vote-Algorithm/" class="post-title-link" itemprop="url">Boyer-Moore Majority Vote Algorithm</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-11-13 23:05:06 / Modified: 23:26:51" itemprop="dateCreated datePublished" datetime="2019-11-13T23:05:06-08:00">2019-11-13</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>Boyer-Moore Vote Algorithm由UT Austion的Robert S. Boyer 和 J Strother Moore提出，是为了解决找出一个数组中出现次数大于n / 2 的数的，其中n为数组长度，乃至可以类推到找出k - 1个出现次数大于n / k的数。这个问题直观上来可以使用哈希表统计出现次数，不过对于算法优化的追求，使得许多存储空间是不必要的，通过使用Boyer-Moore Majority Vote Algorithm（可译为摩尔投票）空间复杂度可以降低到O(1)，这道题现在经常出现在公司面试题中。</p>
+<h2 id="intution"><a href="#intution" class="headerlink" title="intution"></a>intution</h2><p>如果存在出现次数大于n / k的 k - 1个数，那么剩下的数字的总数必然小于(k - 1) * k / n，比如找出大于一半的数，如果这个数存在则剩下所有的数的出现次数总和必然小于一半。即将数组抽象为两个部分，出现n / 2次数的数k，和非k。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>Initialize an element m and a counter i with i = 0</li>
+<li>For each element x of the input sequence:<ul>
+<li>If i = 0, then assign m = x and i = 1</li>
+<li>else if m = x, then assign i = i + 1</li>
+</ul>
+</li>
+<li>else assign i = i − 1</li>
+<li>Return m<br>用找大于n / 2来举例，设置一个candidate和count，如果找到一个数等于candidiate则count + 1，否则count - 1如果count变成0，则将candidate更新为当前指针所指的新数字。<br>下图来自于wikipedia，直观上说明了为什么这个算法是可行的：</li>
+</ul>
+<p><img alt src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Boyer-Moore_MJRTY.svg/2560px-Boyer-Moore_MJRTY.svg.png"><br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/13/Boyer-Moore-Vote-Algorithm/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
         <article itemscope itemtype="http://schema.org/Article">
   
   
@@ -1110,100 +1216,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yi Zhou">
-      <meta itemprop="description" content="姑妄言之姑听之">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yi's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/28/Leetcode525-Contiguous-Array/" class="post-title-link" itemprop="url">Leetcode525 Contiguous Array</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-28 11:52:30 / Modified: 14:10:05" itemprop="dateCreated datePublished" datetime="2019-10-28T11:52:30-07:00">2019-10-28</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/10/28/Leetcode525-Contiguous-Array/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1256,7 +1268,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1269,7 +1281,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1282,7 +1294,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1431,9 +1443,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
       

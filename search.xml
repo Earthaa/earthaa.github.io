@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Boyer-Moore Majority Vote Algorithm</title>
+      <link href="/2019/11/13/Boyer-Moore-Vote-Algorithm/"/>
+      <url>/2019/11/13/Boyer-Moore-Vote-Algorithm/</url>
+      
+        <content type="html"><![CDATA[<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>Boyer-Moore Vote Algorithm由UT Austion的Robert S. Boyer 和 J Strother Moore提出，是为了解决找出一个数组中出现次数大于n / 2 的数的，其中n为数组长度，乃至可以类推到找出k - 1个出现次数大于n / k的数。这个问题直观上来可以使用哈希表统计出现次数，不过对于算法优化的追求，使得许多存储空间是不必要的，通过使用Boyer-Moore Majority Vote Algorithm（可译为摩尔投票）空间复杂度可以降低到O(1)，这道题现在经常出现在公司面试题中。</p><h2 id="intution"><a href="#intution" class="headerlink" title="intution"></a>intution</h2><p>如果存在出现次数大于n / k的 k - 1个数，那么剩下的数字的总数必然小于(k - 1) * k / n，比如找出大于一半的数，如果这个数存在则剩下所有的数的出现次数总和必然小于一半。即将数组抽象为两个部分，出现n / 2次数的数k，和非k。</p><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul><li>Initialize an element m and a counter i with i = 0</li><li>For each element x of the input sequence:<ul><li>If i = 0, then assign m = x and i = 1</li><li>else if m = x, then assign i = i + 1</li></ul></li><li>else assign i = i − 1</li><li>Return m<br>用找大于n / 2来举例，设置一个candidate和count，如果找到一个数等于candidiate则count + 1，否则count - 1如果count变成0，则将candidate更新为当前指针所指的新数字。<br>下图来自于wikipedia，直观上说明了为什么这个算法是可行的：</li></ul><p><img alt src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Boyer-Moore_MJRTY.svg/2560px-Boyer-Moore_MJRTY.svg.png"><br><a id="more"></a></p><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="Leetcode-169-Majority-Element"><a href="#Leetcode-169-Majority-Element" class="headerlink" title="Leetcode 169 Majority Element"></a>Leetcode 169 Majority Element</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> candidate = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(candidate == num)</span><br><span class="line">            ++count;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">            count = <span class="number">1</span>;</span><br><span class="line">            candidate = num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            --count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> candidate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这是这个算法的典型应用，找出出现次数大于一半的数字，这个数字保证存在</p><h3 id="Leetcode-229-Majority-Element-II"><a href="#Leetcode-229-Majority-Element-II" class="headerlink" title="Leetcode 229 Majority Element II"></a>Leetcode 229 Majority Element II</h3><p>这个是拓展，找出出现次数大于n / 3的两个数字，这两个数字不一定存在，我们只需要在最后遍历下数组，看看剩下的两个candidate能否满足条件即可。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count1 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> candidate1 = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//注意candidate1 和 candidate2初始化应该不同</span></span><br><span class="line">    <span class="keyword">int</span> candidate2 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num == candidate1)</span><br><span class="line">            count1++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(num == candidate2)</span><br><span class="line">            count2++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(count1 == <span class="number">0</span>)&#123;</span><br><span class="line">            count1 = <span class="number">1</span>;</span><br><span class="line">            candidate1 = num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(count2 == <span class="number">0</span>)&#123;</span><br><span class="line">            count2 = <span class="number">1</span>;</span><br><span class="line">            candidate2 = num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            --count2;</span><br><span class="line">            --count1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    count1 = <span class="number">0</span>;</span><br><span class="line">    count2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num == candidate1)&#123;</span><br><span class="line">            ++count1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(num == candidate2)&#123;</span><br><span class="line">            ++count2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(count1 &gt; nums.length / <span class="number">3</span>)</span><br><span class="line">        res.add(candidate1);</span><br><span class="line">    <span class="keyword">if</span>(count2 &gt; nums.length / <span class="number">3</span>)</span><br><span class="line">        res.add(candidate2);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当然这道题的思想还有别的拓展，如之前我有写过的<a href="https://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/">Leetcode525</a>，也是类似的，遇见+1，没有遇见-1，核心依然在于将整个数组抽象为两个部分。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode692 Top-K Frequent Words</title>
       <link href="/2019/11/13/Leetcode-692-Top-K-Frequent-Words/"/>
       <url>/2019/11/13/Leetcode-692-Top-K-Frequent-Words/</url>
@@ -416,9 +441,9 @@
             
             <tag> Algorithms </tag>
             
-            <tag> Amazon </tag>
-            
             <tag> Graph </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
@@ -507,9 +532,9 @@
             
             <tag> Algorithms </tag>
             
-            <tag> Greedy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Greedy </tag>
             
         </tags>
       
