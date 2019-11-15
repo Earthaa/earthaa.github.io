@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leetcode489 Robot Room Cleaner</title>
+      <link href="/2019/11/14/Leetcode489-Robot-Room-Cleaner/"/>
+      <url>/2019/11/14/Leetcode489-Robot-Room-Cleaner/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a robot cleaner in a room modeled as a grid.</p><p>Each cell in the grid can be empty or blocked.</p><p>The robot cleaner with 4 given APIs can move forward, turn left or turn right. Each turn it made is 90 degrees.</p><p>When it tries to move into a blocked cell, its bumper sensor detects the obstacle and it stays on the current cell.</p><p>Design an algorithm to clean the entire room using only the 4 given APIs shown below.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface Robot &#123;</span><br><span class="line">  // returns true if next cell is open and robot moves into the cell.</span><br><span class="line">  // returns false if next cell is obstacle and robot stays on the current cell.</span><br><span class="line">  boolean move();</span><br><span class="line"></span><br><span class="line">  // Robot will stay on the same cell after calling turnLeft/turnRight.</span><br><span class="line">  // Each turn will be 90 degrees.</span><br><span class="line">  void turnLeft();</span><br><span class="line">  void turnRight();</span><br><span class="line"></span><br><span class="line">  // Clean the current cell.</span><br><span class="line">  void clean();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">room = [</span><br><span class="line">  [1,1,1,1,1,0,1,1],</span><br><span class="line">  [1,1,1,1,1,0,1,1],</span><br><span class="line">  [1,0,1,1,1,1,1,1],</span><br><span class="line">  [0,0,0,1,0,0,0,0],</span><br><span class="line">  [1,1,1,1,1,1,1,1]</span><br><span class="line">],</span><br><span class="line">row = 1,</span><br><span class="line">col = 3</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">All grids in the room are marked by either 0 or 1.</span><br><span class="line">0 means the cell is blocked, while 1 means the cell is accessible.</span><br><span class="line">The robot initially starts at the position of row=1, col=3.</span><br><span class="line">From the top left corner, its position is one row below and three columns right.</span><br></pre></td></tr></table></figure><p><strong>Note:</strong></p><ul><li>The input is only given to initialize the room and the robot’s position internally. You must solve this problem “blindfolded”. In other words, you must control the robot using only the mentioned 4 APIs, without knowing the room layout and the initial robot’s position.</li><li>The robot’s initial position will always be in an accessible cell.<br>The initial direction of the robot will be facing up.</li><li>All accessible cells are connected, which means the all cells marked as 1 will be accessible by the robot.</li><li>Assume all four edges of the grid are all surrounded by wall.</li></ul><a id="more"></a><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是一道很有意思的题目，是我刷leetcode以来见到的最奇怪的题目之一，题目是说有一个机器人，提供move，turnLeft，turnRight，clean四个API，move为每次移动一格，要求清洁所有房间，可以理解为允许在一个二维平面内，上下左右地移动，要求遍历所有房间。</p><p>不过很有意思的是，这个题目没有给地图，题目中说了初始位置，但是只在测试的时候用，也就是说并不会当作参数传进来，也就是说这个robot是属于瞎摸索的状态，此外移动只能面朝前移动，所以我们必须时刻记录robot朝向的位置，要求在这种情况下设计算法，遍历每一个能遍历的点，如果不能移动，move函数会返回false。</p><p>其实抽象出来这个题目的本质还是一个DFS，我们要随时保存访问过的节点，由于初始位置不清楚，所以干脆直接初始化位置定为（0，0），然后上下左右移动，将所到达的点保存即可。</p><p><img alt src="https://leetcode.com/problems/robot-room-cleaner/Figures/489/489_backtrack.png"></p><p>不过与通常情况下我们DFS回溯到以前的节点不需要再做什么特殊操作，然而由于本题有一个转向的元素，我们必须保证退回到原来的节点的时候机器人转向一致。</p><p>注意到turnLeft，turnRight都是每次旋转90度，也就是每四次一个轮回，利用这个性质，我们可以将机器人在返回原来的位置的时候，调整原先的转向。</p><p>代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//visited是一个存String的hash表，将两个坐标转化为String存起来</span></span><br><span class="line">HashSet&lt;String&gt; visited;</span><br><span class="line"><span class="comment">// dx，dy用来保存上下左右四个位置，方便搜索时遍历调用</span></span><br><span class="line"><span class="keyword">int</span>[] dx = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] dy = &#123;<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cleanRoom</span><span class="params">(Robot robot)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    visited = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    doClean(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, robot);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里的direction可以用作dx，dy里的index，0是向前，1是向右，2是向下，3是向左</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doClean</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> direction, Robot robot)</span></span>&#123;</span><br><span class="line">    <span class="comment">//每次默认开始时robot已经在x，y里了，但还没有做清洁</span></span><br><span class="line">    String coord = Integer.toString(x)  + <span class="string">","</span> + Integer.toString(y);</span><br><span class="line">    visited.add(coord);        </span><br><span class="line">    robot.clean();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++)&#123;</span><br><span class="line">        robot.turnRight();</span><br><span class="line">        <span class="keyword">int</span> newDirection = (direction + i) % <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> newx = x + dx[newDirection];</span><br><span class="line">        <span class="keyword">int</span> newy = y + dy[newDirection];</span><br><span class="line">        String newCoord = Integer.toString(newx) + <span class="string">","</span> + Integer.toString(newy);</span><br><span class="line">        <span class="keyword">if</span>(visited.contains(newCoord))</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(robot.move())</span><br><span class="line">            doClean(newx, newy, newDirection, robot);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 四次之后方向与刚进来的时候的方向是一致的</span></span><br><span class="line">    <span class="comment">// 连续左转两次，与当前方向相反后可移动到上一个点，从哪里来，回哪里去</span></span><br><span class="line">    <span class="comment">// 不过刚回去的时候朝向是反的，得再转两次，把朝向调正确</span></span><br><span class="line">    robot.turnLeft();</span><br><span class="line">    robot.turnLeft();</span><br><span class="line">    robot.move();</span><br><span class="line">    robot.turnLeft();</span><br><span class="line">    robot.turnLeft();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>很有意思的一道DFS题，需要在给定情境下能够活学活用，处理一些正常写DFS不会遇到的边界情况，弄清楚这些后，写起来还是很有意思的，万变不离其宗本质还是一个Backtracing以及DFS。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> DFS </tag>
+            
+            <tag> Backtracing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Boyer-Moore Majority Vote Algorithm</title>
       <link href="/2019/11/13/Boyer-Moore-Vote-Algorithm/"/>
       <url>/2019/11/13/Boyer-Moore-Vote-Algorithm/</url>
@@ -441,9 +470,9 @@
             
             <tag> Algorithms </tag>
             
-            <tag> Graph </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Graph </tag>
             
         </tags>
       
@@ -532,9 +561,9 @@
             
             <tag> Algorithms </tag>
             
-            <tag> Amazon </tag>
-            
             <tag> Greedy </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
