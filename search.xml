@@ -8,7 +8,7 @@
       <link href="/2019/11/17/Leetcode679-Maximum-Swap/"/>
       <url>/2019/11/17/Leetcode679-Maximum-Swap/</url>
       
-        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.</p><p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 2736</span><br><span class="line">Output: 7236</span><br><span class="line">Explanation: Swap the number 2 and the number 7.</span><br></pre></td></tr></table></figure></p><p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 9973</span><br><span class="line">Output: 9973</span><br><span class="line">Explanation: No swap.</span><br></pre></td></tr></table></figure></p><p><strong>Note:</strong></p><p>The given number is in the range [0, 108]<br><a id="more"></a></p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>给定一个数字，允许其中某两位交换一次，求能生成的最大数字。</p><p>暴力法很好想到，先转换为字符串，从头开始遍历，对于第i个数，找[i + 1, n]里的最大的数字，交换下就行了，复杂度为(O^2)。</p><p>当然，我们可以用空间换时间，比如先遍历一边，用一个数组保留[i + 1, n]里的最大的数字和所在位置即可。</p><p>注意到，所有数字其实只有0-9这十种可能性，在上面想法的基础上，我们可以做进一步优化，也就是说用一个数组保留0-9最后出现的位置，然后循环的时候比较看看0-9有没有比num[i]大，且出现的位置在i之后的数，如果有交换即可，为什么要保留最后出现的位置？ 这是由于越如果交换，小的数字放得越后，整个数字就越大，本题说到底还是一个贪心算法的思路。</p><p>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximumSwap</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] str = Integer.toString(num).toCharArray();</span><br><span class="line">    <span class="keyword">int</span>[] last = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length; i++)&#123;</span><br><span class="line">        last[str[i] - <span class="string">'0'</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; str.length; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d = <span class="number">9</span>; d &gt; -<span class="number">1</span>; d--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(d &gt; str[i] - <span class="string">'0'</span> &amp;&amp; last[d] &gt; i)&#123;</span><br><span class="line">                <span class="keyword">char</span> tmp = str[i];</span><br><span class="line">                str[i] = str[last[d]];</span><br><span class="line">                str[last[d]] = tmp;</span><br><span class="line">                <span class="keyword">return</span> Integer.valueOf(<span class="keyword">new</span> String(str));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.</p><p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 2736</span><br><span class="line">Output: 7236</span><br><span class="line">Explanation: Swap the number 2 and the number 7.</span><br></pre></td></tr></table></figure></p><p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 9973</span><br><span class="line">Output: 9973</span><br><span class="line">Explanation: No swap.</span><br></pre></td></tr></table></figure></p><p><strong>Note:</strong></p><p>The given number is in the range [0, 108]<br><a id="more"></a></p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>给定一个数字，允许其中某两位交换一次，求能生成的最大数字。</p><p>暴力法很好想到，先转换为字符串，从头开始遍历，对于第i个数，找[i + 1, n]里的最大的数字，交换下就行了，复杂度为(O^2)。</p><p>当然，我们可以用空间换时间，比如先遍历一边，用一个数组保留[i + 1, n]里的最大的数字和所在位置即可。</p><p>注意到，所有数字其实只有0-9这十种可能性，在上面想法的基础上，我们可以做进一步优化，也就是说用一个数组保留0-9最后出现的位置，然后循环的时候比较看看0-9有没有比num[i]大，且出现的位置在i之后的数，如果有交换即可，为什么要保留最后出现的位置？ 这是由于越如果交换，小的数字放得越后，整个数字就越大，本题说到底还是一个贪心算法的思路。</p><p>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximumSwap</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] str = Integer.toString(num).toCharArray();</span><br><span class="line">    <span class="keyword">int</span>[] last = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">    <span class="comment">// 存储0-9最后出现的位置</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length; i++)&#123;</span><br><span class="line">        last[str[i] - <span class="string">'0'</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; str.length; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d = <span class="number">9</span>; d &gt; -<span class="number">1</span>; d--)&#123;</span><br><span class="line">            <span class="comment">//反向迭代，根据贪心的思路，如果找到，则交换后必然为最大值</span></span><br><span class="line">            <span class="keyword">if</span>(d &gt; str[i] - <span class="string">'0'</span> &amp;&amp; last[d] &gt; i)&#123;</span><br><span class="line">                <span class="keyword">char</span> tmp = str[i];</span><br><span class="line">                str[i] = str[last[d]];</span><br><span class="line">                str[last[d]] = tmp;</span><br><span class="line">                <span class="keyword">return</span> Integer.valueOf(<span class="keyword">new</span> String(str));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> Leetcode </tag>
-            
             <tag> Greedy </tag>
+            
+            <tag> Leetcode </tag>
             
             <tag> Array </tag>
             
@@ -184,9 +184,9 @@
             
             <tag> Algorithms </tag>
             
-            <tag> Leetcode </tag>
-            
             <tag> Greedy </tag>
+            
+            <tag> Leetcode </tag>
             
         </tags>
       
@@ -207,9 +207,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Dynamic Programming </tag>
-            
             <tag> Algorithms </tag>
+            
+            <tag> Dynamic Programming </tag>
             
         </tags>
       
@@ -437,9 +437,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Dynamic Programming </tag>
-            
             <tag> Algorithms </tag>
+            
+            <tag> Dynamic Programming </tag>
             
         </tags>
       
@@ -466,9 +466,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Dynamic Programming </tag>
-            
             <tag> Algorithms </tag>
+            
+            <tag> Dynamic Programming </tag>
             
             <tag> Amazon </tag>
             
