@@ -55,21 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目描述Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.">
-<meta name="keywords" content="LeetCode,Algorithms,Hash Table">
+  <meta name="description" content="题目描述Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A. Since the answer may be large, return the answer modulo 10^9 + 7. Example :1234Input: [3">
+<meta name="keywords" content="Leetcode,Stack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode525 Contiguous Array">
-<meta property="og:url" content="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/index.html">
+<meta property="og:title" content="Leetcode907 Sum Of Subarray Minimums">
+<meta property="og:url" content="http://earthaa.github.io/2019/11/17/Leetcode907-Sum-Of-Subarray-Minimums/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="题目描述Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.">
+<meta property="og:description" content="题目描述Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A. Since the answer may be large, return the answer modulo 10^9 + 7. Example :1234Input: [3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG">
-<meta property="og:updated_time" content="2019-10-28T21:10:05.405Z">
+<meta property="og:updated_time" content="2019-11-18T03:51:31.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode525 Contiguous Array">
-<meta name="twitter:description" content="题目描述Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.">
-<meta name="twitter:image" content="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG">
-  <link rel="canonical" href="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/">
+<meta name="twitter:title" content="Leetcode907 Sum Of Subarray Minimums">
+<meta name="twitter:description" content="题目描述Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A. Since the answer may be large, return the answer modulo 10^9 + 7. Example :1234Input: [3">
+  <link rel="canonical" href="http://earthaa.github.io/2019/11/17/Leetcode907-Sum-Of-Subarray-Minimums/">
 
 
 <script id="page-configurations">
@@ -83,7 +81,7 @@
   };
 </script>
 
-  <title>Leetcode525 Contiguous Array | Yi's Blog</title>
+  <title>Leetcode907 Sum Of Subarray Minimums | Yi's Blog</title>
   
 
 
@@ -254,7 +252,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/28/Leetcode525-Contiguous-Array/">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/11/17/Leetcode907-Sum-Of-Subarray-Minimums/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -266,7 +264,7 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode525 Contiguous Array
+        <h1 class="post-title" itemprop="name headline">Leetcode907 Sum Of Subarray Minimums
 
           
         </h1>
@@ -282,7 +280,7 @@
                 
               
 
-              <time title="Created: 2019-10-28 11:52:30 / Modified: 14:10:05" itemprop="dateCreated datePublished" datetime="2019-10-28T11:52:30-07:00">2019-10-28</time>
+              <time title="Created: 2019-11-17 19:30:27 / Modified: 19:51:31" itemprop="dateCreated datePublished" datetime="2019-11-17T19:30:27-08:00">2019-11-17</time>
             </span>
           
             
@@ -295,7 +293,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
 
                 
                 
@@ -314,14 +312,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.<br><a id="more"></a><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1,0]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是一个题目描述得特别简单的题，不过思路比较tricky，题目要求求一个只含0和1的数组中最长的，含有相同数量0和1的子数组的长度，暴力法O(n^2)遍历所有子数组，这个不难想到，不过题目说数组长度会有50000，有大概率会超时。</p>
-<p>一个Tricky的方法是遍历数组一次，设置一个count，每次遇到1则加一，遇到0则减一，如果同样的count出现两次，则两个index之间的0和1出现次数相等，有一点统计出现一半以上的数字那道题的感觉，也是遇到+1，没有遇到-1，Leetcode官方题解里有一个图很好地说明了这个intuition的原理:</p>
-<p><img alt src="https://leetcode.com/problems/contiguous-array/Figures/535_Contiguous_Array.PNG"></p>
-<p>这里我们需要用一个HashMap存储count与第一次出现该count的index的对应关系，便于日后查找, 具体代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="number">0</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        sum += nums[i] == <span class="number">1</span> ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(sum))</span><br><span class="line">            res = Math.max(res, i - map.get(sum));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            map.put(sum, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一个描述十分简单的题目，很有意思的一个小技巧，从O(N^2)到O(N)的优化，挺适合作为面试题，不过如果以前没有见过这个技巧，可能很难再面试时期想出，所以，还是要多刷题呀~~</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A.</p>
+<p>Since the answer may be large, return the answer modulo <strong>10^9 + 7</strong>.</p>
+<p><strong>Example :</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,2,4]</span><br><span class="line">Output: 17</span><br><span class="line">Explanation: Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. </span><br><span class="line">Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.  Sum is 17.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>1 &lt;= A.length &lt;= 30000</li>
+<li>1 &lt;= A[i] &lt;= 30000<a id="more"></a>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2>题意很好理解，求一个数组的所有子数组里最小元素的和，暴力法可以解出来，也就是遍历所有的子数组，时间复杂度为O(N^2)，不过这个题目还有个限制条件，A的长度会达到30000，根据做这类题目的经验，凡是长度过万，O（N^2）必然会超时。</li>
+</ul>
+<p>的确，还有O（N）的思路。</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>这是我做这题的时候想出来的一个办法，也是Solution中的方法一。</p>
+<p>取数组中某个元素i，如果区间(left, i], [i,right) 中所有元素都大于A[i]，则一共有(i - left) * (right - i)个子数组的最小值为A[i], 注意区间的开闭，即A[left] &lt;= A[i], A[right] &lt;= A[i]，有了这样一个intuition，我们则可以从左右两边遍历，对每个i，求出上一个小于等于A[i]的数字所在的位置，并保存起来。</p>
+<p>这是一个先进后出的结构，可以用栈实现O(N)的求解left，right的算法，具体代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumSubarrayMins</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 取模</span></span><br><span class="line">    <span class="keyword">int</span> mod = <span class="number">1000000007</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// left[i]是左边上一个小于等于A[i]的元素的index</span></span><br><span class="line">    <span class="keyword">int</span>[] left = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">    <span class="comment">// right[i]是上一个右边小于等于A[i]的元素的index</span></span><br><span class="line">    <span class="keyword">int</span>[] right = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">    Stack&lt;Integer&gt; st = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="comment">// 基数设为-1，即(-1, 0]区间</span></span><br><span class="line">    st.push(-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++)&#123;</span><br><span class="line">        <span class="comment">// left数组构造，如果栈顶对应的元素小于A[i]，利用栈的性质，栈顶对应的元素为left[i]，因为再往左，min就不会为A[i]了， 下面right同理</span></span><br><span class="line">        <span class="keyword">if</span>(st.peek() == -<span class="number">1</span> || A[i] &gt; A[st.peek()])&#123;</span><br><span class="line">            left[i] = st.peek();</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(st.peek() != -<span class="number">1</span> &amp;&amp; A[st.peek()] &gt;= A[i])</span><br><span class="line">                st.pop();</span><br><span class="line">            left[i] = st.peek();</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从右往左，再来一遍</span></span><br><span class="line">    st.clear();</span><br><span class="line">    st.push(A.length);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = A.length - <span class="number">1</span>; i &gt; - <span class="number">1</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(st.peek() == A.length || A[i] &gt;= A[st.peek()])&#123;</span><br><span class="line">            right[i] = st.peek();</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(st.peek() != A.length &amp;&amp; A[st.peek()] &gt; A[i])</span><br><span class="line">                st.pop();</span><br><span class="line">            right[i] = st.peek();</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从0 到 N以每个元素为中心，向两边扩展，求子数组，所有子数组会全部覆盖</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++)&#123;</span><br><span class="line">        res = (res + (((i - left[i]) * (right[i] - i)) % mod) * A[i] % mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过还有个方法二，今晚时间有限，待来日总结</p>
 
     </div>
 
@@ -337,11 +341,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
             
-              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
-            
-              <a href="/tags/Hash-Table/" rel="tag"># Hash Table</a>
+              <a href="/tags/Stack/" rel="tag"># Stack</a>
             
           </div>
         
@@ -351,8 +353,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/27/Leetcode380-Insert-Delete-GetRandom-O1/" rel="next" title="Leetcode380 Insert Delete GetRandom O(1)">
-                  <i class="fa fa-chevron-left"></i> Leetcode380 Insert Delete GetRandom O(1)
+                <a href="/2019/11/17/Leetcode679-Maximum-Swap/" rel="next" title="Leetcode679 Maximum Swap">
+                  <i class="fa fa-chevron-left"></i> Leetcode679 Maximum Swap
                 </a>
               
             </div>
@@ -360,10 +362,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/29/二叉树中序搜索转双向链表——Bytedance的一条面试题/" rel="prev" title="二叉树中序搜索转双向链表——Bytedance的一条面试题">
-                  二叉树中序搜索转双向链表——Bytedance的一条面试题 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -412,7 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
