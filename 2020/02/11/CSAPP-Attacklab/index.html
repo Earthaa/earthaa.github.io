@@ -55,32 +55,33 @@
   };
 </script>
 
-  <meta name="description" content="姑妄言之姑听之">
-<meta name="keywords" content="pen, notes, coding, developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yi&#39;s Blog">
-<meta property="og:url" content="http://earthaa.github.io/page/3/index.html">
+  <meta name="description" content="Attack lab简介这是CSAPP的第三个实验，跟Bomb lab有些类似，都需要你对X86-64汇编语言以及一套调试的方式有着足够的理解，所不同的是，这一次更注重于写汇编语言的代码，并且以Byte的格式注入到程序内，用来攻击程序，简单地说，这个实验就是模拟一个黑客所做的事情。 实验分为两个部分注入攻击和返回值攻击，前者的栈的地址是固定的，裸奔状态，后者每次栈内存起始地址都会发生变化，难度有所">
+<meta name="keywords" content="CSAPP,Assembly Language">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入理解计算机系统》Attack Lab实验解析">
+<meta property="og:url" content="http://earthaa.github.io/2020/02/11/CSAPP-Attacklab/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="姑妄言之姑听之">
+<meta property="og:description" content="Attack lab简介这是CSAPP的第三个实验，跟Bomb lab有些类似，都需要你对X86-64汇编语言以及一套调试的方式有着足够的理解，所不同的是，这一次更注重于写汇编语言的代码，并且以Byte的格式注入到程序内，用来攻击程序，简单地说，这个实验就是模拟一个黑客所做的事情。 实验分为两个部分注入攻击和返回值攻击，前者的栈的地址是固定的，裸奔状态，后者每次栈内存起始地址都会发生变化，难度有所">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-12T06:58:16.693Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yi&#39;s Blog">
-<meta name="twitter:description" content="姑妄言之姑听之">
-  <link rel="canonical" href="http://earthaa.github.io/page/3/">
+<meta name="twitter:title" content="《深入理解计算机系统》Attack Lab实验解析">
+<meta name="twitter:description" content="Attack lab简介这是CSAPP的第三个实验，跟Bomb lab有些类似，都需要你对X86-64汇编语言以及一套调试的方式有着足够的理解，所不同的是，这一次更注重于写汇编语言的代码，并且以Byte的格式注入到程序内，用来攻击程序，简单地说，这个实验就是模拟一个黑客所做的事情。 实验分为两个部分注入攻击和返回值攻击，前者的栈的地址是固定的，裸奔状态，后者每次栈内存起始地址都会发生变化，难度有所">
+  <link rel="canonical" href="http://earthaa.github.io/2020/02/11/CSAPP-Attacklab/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Yi's Blog</title>
+  <title>《深入理解计算机系统》Attack Lab实验解析 | Yi's Blog</title>
   
 
 
@@ -244,13 +245,14 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/">
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2020/02/11/CSAPP-Attacklab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Zhou">
@@ -262,9 +264,8 @@
       <meta itemprop="name" content="Yi's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/" class="post-title-link" itemprop="url">Leetcode1192 Critical Coneections in a Network</a>
+        <h1 class="post-title" itemprop="name headline">《深入理解计算机系统》Attack Lab实验解析
+
           
         </h1>
 
@@ -279,7 +280,7 @@
                 
               
 
-              <time title="Created: 2019-10-21 13:28:15 / Modified: 19:40:05" itemprop="dateCreated datePublished" datetime="2019-10-21T13:28:15-07:00">2019-10-21</time>
+              <time title="Created: 2020-02-11 10:12:10 / Modified: 22:58:16" itemprop="dateCreated datePublished" datetime="2020-02-11T10:12:10-08:00">2020-02-11</time>
             </span>
           
             
@@ -292,220 +293,14 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are n servers numbered from 0 to n-1 connected by undirected server-to-server connections forming a network where connections[i] = [a, b] represents a connection between servers a and b. Any server can reach any other server directly or indirectly through the network.</p>
-<p>A critical connection is a connection that, if removed, will make some server unable to reach some other server.</p>
-<p>Return all critical connections in the network in any order.<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/10/21/Leetcode1192-Critical-Coneections-in-a-Network/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/21/hexo配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yi Zhou">
-      <meta itemprop="description" content="姑妄言之姑听之">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yi's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/21/hexo配置/" class="post-title-link" itemprop="url">hexo配置</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-21 00:07:33" itemprop="dateCreated datePublished" datetime="2019-09-21T00:07:33-07:00">2019-09-21</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-22 17:54:07" itemprop="dateModified" datetime="2019-10-22T17:54:07-07:00">2019-10-22</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/配置/" itemprop="url" rel="index"><span itemprop="name">配置</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>利用GitHub page的功能可以十分方便的设计出一个美观的个人博客，我的一些非CS的同学都有，这篇文章大概用来记录一些配置过程中踩到的坑，以后，如果有需要会逐步扩展，网上内容七零八碎，我在这里做个整合，供日后查阅，并且就权当刚建好blog的一次试水博文<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/21/hexo配置/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/20/csapp信息的表示与处理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yi Zhou">
-      <meta itemprop="description" content="姑妄言之姑听之">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yi's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/20/csapp信息的表示与处理/" class="post-title-link" itemprop="url">CSAPP信息的表示与处理</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-20 17:12:48" itemprop="dateCreated datePublished" datetime="2019-09-20T17:12:48-07:00">2019-09-20</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-22 17:57:06" itemprop="dateModified" datetime="2019-10-22T17:57:06-07:00">2019-10-22</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统/" itemprop="url" rel="index"><span itemprop="name">系统</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSAPP-lab/" itemprop="url" rel="index"><span itemprop="name">CSAPP lab</span></a></span>
 
                 
                 
                   , 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统/二进制/" itemprop="url" rel="index"><span itemprop="name">二进制</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSAPP-lab/CSAPP/" itemprop="url" rel="index"><span itemprop="name">CSAPP</span></a></span>
 
                 
                 
@@ -524,143 +319,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文是对CMU 15213第一部分，信息的表示与处理的一个个人笔记和总结，主要包括计算机内整数的表示和浮点数的表示。</p>
-<p>众所周知，计算机里对数字的表示方式是用二进制，显然，这与人类的习惯和直觉并不相符，根据Professor Bryant上课的说法，最早的计算机的确有人尝试过十进制，但后来发现，如果采用十进制表示数字，只能使用模拟信号处理，而模拟信号并不如数字信号准确和稳定，于是人们逐渐抛弃了其他进制的表示方法，而采用二进制。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/20/csapp信息的表示与处理/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
+        <h2 id="Attack-lab"><a href="#Attack-lab" class="headerlink" title="Attack lab"></a>Attack lab</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>这是CSAPP的第三个实验，跟Bomb lab有些类似，都需要你对X86-64汇编语言以及一套调试的方式有着足够的理解，所不同的是，这一次更注重于写汇编语言的代码，并且以Byte的格式注入到程序内，用来攻击程序，简单地说，这个实验就是模拟一个黑客所做的事情。</p>
+<p>实验分为两个部分注入攻击和返回值攻击，前者的栈的地址是固定的，裸奔状态，后者每次栈内存起始地址都会发生变化，难度有所增加。与Bomb lab不同的是，这个实验如果攻击失败，不会扣分，可以放心地进行各种调试和实验的操作。</p>
+<a id="more"></a>
+<h3 id="一些需要用到的操作"><a href="#一些需要用到的操作" class="headerlink" title="一些需要用到的操作"></a>一些需要用到的操作</h3><p>打开Attack lab的文件夹，我们可以发现里面主要有四个文件：</p>
+<p>ctarget 用来进行代码注入攻击<br>rtarget 用来进行返回值攻击<br>cookie.txt 是一个唯一表示的字符串，可以理解为ID，主要是CMU用来防止学生作弊互相抄答案，里面很多需要攻击的函数，都要将这个作为参数传入<br>hex2raw 用来将64进制Byte码变成字符串，可用来传入到需要攻击的程序中</p>
+<p>此外，根据handout的提示和我个人做这个lab的经验，以下一些命令可能会非常有用:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hex2raw &lt; ans.txt | ./ctarget -q</span><br></pre></td></tr></table></figure></p>
+<p>通过管道来将ans里的Byte码变成字符串传入需要攻击的程序中，-q是不发信息给服务器，自学用需要加上这个参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c example.s</span><br><span class="line"><span class="meta">unix&gt;</span> objdump -d example.o &gt; example.d</span><br></pre></td></tr></table></figure>
+<p>上面这段是可以用来现实x86-64汇编语言所对应的16位字节码<br>比如，example.s<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; Example of hand-generated assembly code</span></span><br><span class="line">pushq   <span class="number">$0</span>xabcdef</span><br><span class="line">addq    <span class="number">$17</span>,%rax</span><br><span class="line">movl    %eax,%edx</span><br><span class="line"><span class="comment">; Push value onto stack</span></span><br><span class="line"><span class="comment">; Add 17 to %rax</span></span><br><span class="line"><span class="comment">; Copy lower 32 bits to %edx</span></span><br></pre></td></tr></table></figure></p>
+<p>对应的example.d则是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Disassembly of section .text:</span><br><span class="line">0000000000000000 &lt;.text&gt;:</span><br><span class="line">   0: 68 ef cd ab 00,      pushq  $0xabcdef</span><br><span class="line">   5: 48 83 c0 11          add    $0x11,%rax</span><br><span class="line">   9: 89 c2 mov            %eax,%edx</span><br></pre></td></tr></table></figure></p>
+<h2 id="Part1-Code-Injection-Attacks"><a href="#Part1-Code-Injection-Attacks" class="headerlink" title="Part1 Code Injection Attacks"></a>Part1 Code Injection Attacks</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>这是lab的第一部分，代码注入攻击，ctarget是我们要攻击的程序，题目告诉我们ctarget里有一个叫做test的函数<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> <span class="keyword">int</span> val;</span><br><span class="line"> val = getbuf();</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"No exploit. Getbuf returned 0x%x\n"</span>, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>根据题目的意思这个函数应该是每次都会调用的，然后这个函数会调用一个不安全的getbuf函数，有点类似于get，不检查读入的字符串的大小，也不加以任何保护，使得我们利用getbuf，可以对其进行代码注入达到攻击的效果。</p>
+
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/CSAPP/" rel="tag"># CSAPP</a>
+            
+              <a href="/tags/Assembly-Language/" rel="tag"># Assembly Language</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/01/12/CSAPP-Bomblab/" rel="next" title="《深入理解计算机系统》Bomb Lab实验解析">
+                  <i class="fa fa-chevron-left"></i> 《深入理解计算机系统》Bomb Lab实验解析
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://earthaa.github.io/2019/09/20/LeetCode763-Partition-Labels/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yi Zhou">
-      <meta itemprop="description" content="姑妄言之姑听之">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yi's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/20/LeetCode763-Partition-Labels/" class="post-title-link" itemprop="url">LeetCode763 Partition Labels</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-20 15:11:25" itemprop="dateCreated datePublished" datetime="2019-09-20T15:11:25-07:00">2019-09-20</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-28 14:00:01" itemprop="dateModified" datetime="2019-10-28T14:00:01-07:00">2019-10-28</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/20/LeetCode763-Partition-Labels/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
 
 
           </div>
@@ -679,6 +398,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -691,6 +415,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Attack-lab"><span class="nav-number">1.</span> <span class="nav-text">Attack lab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些需要用到的操作"><span class="nav-number">1.2.</span> <span class="nav-text">一些需要用到的操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part1-Code-Injection-Attacks"><span class="nav-number">2.</span> <span class="nav-text">Part1 Code Injection Attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -871,18 +597,6 @@
 
   
 
-  
-    
-      
-    
-      
-        
-      
-    
-      
-    
-      
-    
   
     
       

@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>《深入理解计算机系统》Attack Lab实验解析</title>
+      <link href="/2020/02/11/CSAPP-Attacklab/"/>
+      <url>/2020/02/11/CSAPP-Attacklab/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Attack-lab"><a href="#Attack-lab" class="headerlink" title="Attack lab"></a>Attack lab</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>这是CSAPP的第三个实验，跟Bomb lab有些类似，都需要你对X86-64汇编语言以及一套调试的方式有着足够的理解，所不同的是，这一次更注重于写汇编语言的代码，并且以Byte的格式注入到程序内，用来攻击程序，简单地说，这个实验就是模拟一个黑客所做的事情。</p><p>实验分为两个部分注入攻击和返回值攻击，前者的栈的地址是固定的，裸奔状态，后者每次栈内存起始地址都会发生变化，难度有所增加。与Bomb lab不同的是，这个实验如果攻击失败，不会扣分，可以放心地进行各种调试和实验的操作。</p><a id="more"></a><h3 id="一些需要用到的操作"><a href="#一些需要用到的操作" class="headerlink" title="一些需要用到的操作"></a>一些需要用到的操作</h3><p>打开Attack lab的文件夹，我们可以发现里面主要有四个文件：</p><p>ctarget 用来进行代码注入攻击<br>rtarget 用来进行返回值攻击<br>cookie.txt 是一个唯一表示的字符串，可以理解为ID，主要是CMU用来防止学生作弊互相抄答案，里面很多需要攻击的函数，都要将这个作为参数传入<br>hex2raw 用来将64进制Byte码变成字符串，可用来传入到需要攻击的程序中</p><p>此外，根据handout的提示和我个人做这个lab的经验，以下一些命令可能会非常有用:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hex2raw &lt; ans.txt | ./ctarget -q</span><br></pre></td></tr></table></figure></p><p>通过管道来将ans里的Byte码变成字符串传入需要攻击的程序中，-q是不发信息给服务器，自学用需要加上这个参数。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c example.s</span><br><span class="line"><span class="meta">unix&gt;</span> objdump -d example.o &gt; example.d</span><br></pre></td></tr></table></figure><p>上面这段是可以用来现实x86-64汇编语言所对应的16位字节码<br>比如，example.s<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; Example of hand-generated assembly code</span></span><br><span class="line">pushq   <span class="number">$0</span>xabcdef</span><br><span class="line">addq    <span class="number">$17</span>,%rax</span><br><span class="line">movl    %eax,%edx</span><br><span class="line"><span class="comment">; Push value onto stack</span></span><br><span class="line"><span class="comment">; Add 17 to %rax</span></span><br><span class="line"><span class="comment">; Copy lower 32 bits to %edx</span></span><br></pre></td></tr></table></figure></p><p>对应的example.d则是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Disassembly of section .text:</span><br><span class="line">0000000000000000 &lt;.text&gt;:</span><br><span class="line">   0: 68 ef cd ab 00,      pushq  $0xabcdef</span><br><span class="line">   5: 48 83 c0 11          add    $0x11,%rax</span><br><span class="line">   9: 89 c2 mov            %eax,%edx</span><br></pre></td></tr></table></figure></p><h2 id="Part1-Code-Injection-Attacks"><a href="#Part1-Code-Injection-Attacks" class="headerlink" title="Part1 Code Injection Attacks"></a>Part1 Code Injection Attacks</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>这是lab的第一部分，代码注入攻击，ctarget是我们要攻击的程序，题目告诉我们ctarget里有一个叫做test的函数<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> <span class="keyword">int</span> val;</span><br><span class="line"> val = getbuf();</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"No exploit. Getbuf returned 0x%x\n"</span>, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>根据题目的意思这个函数应该是每次都会调用的，然后这个函数会调用一个不安全的getbuf函数，有点类似于get，不检查读入的字符串的大小，也不加以任何保护，使得我们利用getbuf，可以对其进行代码注入达到攻击的效果。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP lab </category>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
+            
+            <tag> Assembly Language </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《深入理解计算机系统》Bomb Lab实验解析</title>
       <link href="/2020/01/12/CSAPP-Bomblab/"/>
       <url>/2020/01/12/CSAPP-Bomblab/</url>
